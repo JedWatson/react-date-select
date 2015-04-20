@@ -35,7 +35,6 @@ module.exports = React.createClass({
 	},
 
 	render() {
-		console.log('calendar selected day', this.props.selectedDate)
 		var self = this;
 		var firstDayOfMonth = moment().startOf('month').format('D');
 		var lastDayOfMonth  = moment().endOf('month').format('D');
@@ -74,7 +73,7 @@ module.exports = React.createClass({
 				'before-selected-day': self.state.selectedDate && (day < self.state.selectedDate),
 				'after-selected-day': self.state.selectedDate && (day > self.state.selectedDate)
 			})
-			return <button key={'day' + day} onClick={self.handleDaySelection.bind(this, day)} className={dayClass}>{day}</button>
+			return <button key={'day' + day} onClick={self.handleDaySelection.bind(self, day)} className={dayClass}>{day}</button>
 		});
 		
 		var titleMonths = months.map(function(month, i) {
