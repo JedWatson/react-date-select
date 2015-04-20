@@ -1,0 +1,35 @@
+{
+  "name": "react-date-select",
+  "main": "dist/react-date-select.min.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/JedWatson/react-date-select",
+  "authors": [
+    "Jed Watson"
+  ],
+  "description": "A Date Select / Picker Input Component built with and for ReactJS",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "react",
+    "react-component",
+    "date",
+    "datepicker",
+    "dateinput",
+    "input",
+    "form",
+    "ui"
+  ],
+  "license": "MIT",
+  "ignore": [
+    ".editorconfig",
+    ".gitignore",
+    "package.json",
+    "src",
+    "node_modules",
+    "example",
+    "test"
+  ]
+}
