@@ -1,38 +1,3 @@
-a {
-  color: #08c;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-.container {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 400px;
-  padding: 1em;
-}
-.footer {
-  margin-top: 50px;
-  border-top: 1px solid #eee;
-  padding: 20px 0;
-  font-size: 12px;
-  color: #999;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: #222;
-  font-weight: 300;
-  margin: 1em 0 0.5em 0;
-}
-.hint {
-  margin: 15px 0;
-  font-style: italic;
-  color: #999;
-}
 .btn {
   -webkit-transition: box-shadow ease-in-out 0.15s;
   -o-transition: box-shadow ease-in-out 0.15s;
@@ -679,11 +644,11 @@ fieldset[disabled] .btn-link-cancel {
   opacity: 1;
 }
 .date-select-calendar-toolbar-button-prev {
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAA8CAYAAAAUufjgAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDE0IDc5LjE1Njc5NywgMjAxNC8wOC8yMC0wOTo1MzowMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RjBBQkU4NjZENUM5MTFFNEI1MkFDNEUxMUIxMzU3NDEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RjBBQkU4NjdENUM5MTFFNEI1MkFDNEUxMUIxMzU3NDEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGMEFCRTg2NEQ1QzkxMUU0QjUyQUM0RTExQjEzNTc0MSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpGMEFCRTg2NUQ1QzkxMUU0QjUyQUM0RTExQjEzNTc0MSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pp2znPUAAAD9SURBVHja7JnBCQIxEEUzkgZsQkuwAW3GfrQRj+rdFkwRNuAhTiCBIARNMnFH9g989rLsPObzk+wuee+N5loY5QVAAAIQgAAEIAABCMB5A9qam4mouVHryX32FgeHDl1PCKP/VpW1ZJ1Di9o+ueygya1Yp3hVZ/GWdZOAG2HxnvWMtuZqtlgKMIXBFzQpYB4GcUCrJQwjQiIbBuGQlMIgbnHrBMn8qjpCsmM9Rk+wN8VrltNocao7a8O6arT4faE+al2o/2Kr+xQeVYBph3EaQlIqF8Nz0XbcKh75WydINY3xVtf7XjzFXyl8+gAgAAEIQAACEIAABKDqegkwAHr84FvNdKczAAAAAElFTkSuQmCC");
+  background-image: url('../../images/date-select-button-prev.png');
   left: 0;
 }
 .date-select-calendar-toolbar-button-next {
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAA8CAYAAAAUufjgAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDE0IDc5LjE1Njc5NywgMjAxNC8wOC8yMC0wOTo1MzowMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6M0UyMTVBRTNENUNBMTFFNEI1MkFDNEUxMUIxMzU3NDEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6M0UyMTVBRTRENUNBMTFFNEI1MkFDNEUxMUIxMzU3NDEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGMEFCRTg2OEQ1QzkxMUU0QjUyQUM0RTExQjEzNTc0MSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozRTIxNUFFMkQ1Q0ExMUU0QjUyQUM0RTExQjEzNTc0MSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgHkmaEAAAEASURBVHja7JnRDYIwEIapYQGHkBVcAN90EfeRZdR3VhB3YAEf6jWpiRDBpj3gT/gv+R9Lv9z1b6/UWGsz5Nhk4EFAAhKQgAQkIAEJSMB1A+Ypg40x0WNDO/lVlLhKrcTfVMfq8wnRVbSdYl4tQKdGVGgDaq7BnagWHRBL/K2X6IxY4r4uY+ZBABw1Dwqg0+OXeZYwyVAU3jwlikmG1DEPUgY7xzdqBtv+/hg6Rz5D1p6ikzcLXD94F+1j4aYucYW6UUMfdW1os7CESZwZjr7tgrs03bwZGnWbKZQ4quUPncOkvJPwVpd6G5vjlYq/PghIQAISkIAEJCABCQgdbwEGAOhL4l/o/UvgAAAAAElFTkSuQmCC");
+  background-image: url('../../images/date-select-button-next.png');
   right: 0;
 }
 .date-select-calendar-legend {

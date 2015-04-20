@@ -12,7 +12,14 @@ var DateSelect = require('react-date-select');
 var DateSelectExamples = React.createClass({
 	displayName: 'DateSelectExamples',
 	getInitialState: function getInitialState() {
-		return {};
+		return {
+			singleDateValue: new Date(),
+			multiDateValue1: [new Date(), new Date()],
+			multiDateValue2: [new Date(), new Date()]
+		};
+	},
+	onDateChange: function onDateChange(key, value) {
+		this.setState({ key: value });
 	},
 	render: function render() {
 		return React.createElement(
@@ -28,7 +35,7 @@ var DateSelectExamples = React.createClass({
 				null,
 				'Pick a single date'
 			),
-			React.createElement(DateSelect, { isOpen: this.state.dateSelectIsOpen, onChange: this.toggleDateSelect }),
+			React.createElement(DateSelect, { value: this.state.singleDateValue, onChange: this.onDateChange.bind(this, 'singleDateValue') }),
 			React.createElement(
 				'h3',
 				null,
@@ -39,7 +46,7 @@ var DateSelectExamples = React.createClass({
 				null,
 				'Pick a start and end date'
 			),
-			React.createElement(DateSelect, { isOpen: this.state.multiSelectIsOpen, onChange: this.toggleMultiSelect, isMulti: true, buttonLabel: 'Launch range picker' }),
+			React.createElement(DateSelect, { value: this.state.multiDateValue1, onChange: this.onDateChange.bind(this, 'multiDateValue1'), isMulti: true, buttonLabel: 'Launch range picker' }),
 			React.createElement(
 				'h3',
 				null,
@@ -50,7 +57,7 @@ var DateSelectExamples = React.createClass({
 				null,
 				'Pick a start and end date, with the option to use predefined ranges.'
 			),
-			React.createElement(DateSelect, { isOpen: this.state.rangeSelectIsOpen, onChange: this.toggleRangeSelect, isMulti: true, showPredefinedRanges: true, buttonLabel: 'Launch range picker (with default ranges)' })
+			React.createElement(DateSelect, { value: this.state.multiDateValue2, onChange: this.onDateChange.bind(this, 'multiDateValue2'), isMulti: true, showPredefinedRanges: true, buttonLabel: 'Launch range picker (with default ranges)' })
 		);
 	}
 });
