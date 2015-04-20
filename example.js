@@ -6,14 +6,62 @@ These errors can be ignored until the bug has been fixed.
 
 'use strict';
 
-var React = require('react'),
-    DateSelect = require('react-date-select');
+var React = require('react/addons');
+var DateSelect = require('react-date-select');
 
-React.render(React.createElement(
-	'div',
-	null,
-	'Date Select:',
-	React.createElement(DateSelect, null)
-), document.getElementById('example'));
+var DateSelectExamples = React.createClass({
+	displayName: 'DateSelectExamples',
+	getInitialState: function getInitialState() {
+		return {
+			singleDateValue: new Date(),
+			multiDateValue1: [new Date(), new Date()],
+			multiDateValue2: [new Date(), new Date()]
+		};
+	},
+	onDateChange: function onDateChange(key, value) {
+		this.setState({ key: value });
+	},
+	render: function render() {
+		return React.createElement(
+			'div',
+			null,
+			React.createElement(
+				'h3',
+				null,
+				'Day Select'
+			),
+			React.createElement(
+				'p',
+				null,
+				'Pick a single date'
+			),
+			React.createElement(DateSelect, { value: this.state.singleDateValue, onChange: this.onDateChange.bind(this, 'singleDateValue') }),
+			React.createElement(
+				'h3',
+				null,
+				'Multi Select'
+			),
+			React.createElement(
+				'p',
+				null,
+				'Pick a start and end date'
+			),
+			React.createElement(DateSelect, { value: this.state.multiDateValue1, onChange: this.onDateChange.bind(this, 'multiDateValue1'), isMulti: true, buttonLabel: 'Launch range picker' }),
+			React.createElement(
+				'h3',
+				null,
+				'Multi Select with Ranges'
+			),
+			React.createElement(
+				'p',
+				null,
+				'Pick a start and end date, with the option to use predefined ranges.'
+			),
+			React.createElement(DateSelect, { value: this.state.multiDateValue2, onChange: this.onDateChange.bind(this, 'multiDateValue2'), isMulti: true, showPredefinedRanges: true, buttonLabel: 'Launch range picker (with default ranges)' })
+		);
+	}
+});
 
-},{"react":undefined,"react-date-select":undefined}]},{},[1]);
+React.render(React.createElement(DateSelectExamples, null), document.getElementById('example'));
+
+},{"react-date-select":undefined,"react/addons":undefined}]},{},[1]);
