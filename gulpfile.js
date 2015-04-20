@@ -5,7 +5,13 @@ var taskConfig = {
 
 	component: {
 		name: 'DateSelect',
-		less: 'less/dateselect.less'
+		less: 'less/dateselect.less',
+		dependencies: [
+			'react',
+			'react/addons',
+			'classnames',
+			'lodash'
+		]
 	},
 
 	example: {
