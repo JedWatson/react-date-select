@@ -5,32 +5,19 @@ var classNames = require('classnames');
 
 var DateSelectCalendar = require('./DateSelectCalendar');
 
-var DEFAULT_RANGES = [
-	{ value: moment().subtract(1, 'weeks'),   label: 'Past week' },
-	{ value: moment().subtract(1, 'months'),  label: 'Past month' },
-	{ value: moment().subtract(3, 'months'),  label: 'Past 3 months' },
-	{ value: moment().subtract(6, 'months'),  label: 'Past 6 months' },
-	{ value: moment().subtract(12, 'months'), label: 'Past 12 months' }
-];
-
 module.exports = React.createClass({
 	displayName: 'DateSelectDialog',
 	propTypes: {
-		isMulti: React.PropTypes.bool,
-		showPredefinedRanges: React.PropTypes.bool,
-		predefinedRangeOptions: React.PropTypes.array,
 		backdropClosesDateSelect: React.PropTypes.bool,
-
+		className: React.PropTypes.string,
 		isExpanded: React.PropTypes.bool,
-		isInstant: React.PropTypes.bool,
 		isHeaderless: React.PropTypes.bool,
-
-		customClass: React.PropTypes.string
-	},
-	getDefaultProps() {
-		return {
-			predefinedRangeOptions: DEFAULT_RANGES
-		};
+		isInstant: React.PropTypes.bool,
+		isMulti: React.PropTypes.bool,
+		onCancel: React.PropTypes.func,
+		onSelect: React.PropTypes.func,
+		predefinedRangeOptions: React.PropTypes.array,
+		showPredefinedRanges: React.PropTypes.bool
 	},
 	getInitialState() {
 		return {
@@ -38,10 +25,6 @@ module.exports = React.createClass({
 			endDate: ''
 		};
 	},
-	toggleDropdown() {
-		this.setState({ dropdownOpen: !this.state.dropdownOpen });
-	},
-	
 	renderDialog() {
 		return (
 			<div className="modal-dialog date-picker-dialog">
@@ -52,7 +35,7 @@ module.exports = React.createClass({
 					</div>
 					{this.renderRanges()}
 					{!this.props.isInstant && <div className="date-picker-footer">
-						<button onClick={this.props.onChange} className="date-picker-footer-button primary">Confirm</button>
+						<button onClick={this.props.onSelect} className="date-picker-footer-button primary">Confirm</button>
 						<button onClick={this.props.onCancel} className="date-picker-footer-button">Cancel</button>
 					</div>}
 				</div>
@@ -61,13 +44,13 @@ module.exports = React.createClass({
 	},
 	renderRanges() {
 		if (!this.props.showPredefinedRanges) return;
+		var self = this;
 		var rangeItems = this.props.predefinedRangeOptions.map(function(r,i) {
 			function action() {
 				self.setState({
 					startDate: moment().format('D'),
 					endDate: r.value.format('D')
 				});
-				console.log(moment().format() + ' to ' + r.value.format());
 			};
 			return <button key={'range-button' + i} onClick={action} className="date-picker-range">{r.label}</button>;
 		});
@@ -86,14 +69,12 @@ module.exports = React.createClass({
 		);
 	},
 	render() {
-		var self = this;
-		
 		// classes
 		var componentClass = classNames('date-picker', {
 			'single-picker': !this.props.isMulti,
 			'multi-picker': this.props.isMulti,
 			'range-picker': this.props.showPredefinedRanges
-		}, this.props.customClass);
+		}, this.props.className);
 		
 		// build the components
 		return (
