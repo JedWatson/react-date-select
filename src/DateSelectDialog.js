@@ -44,16 +44,16 @@ module.exports = React.createClass({
 	
 	renderDialog() {
 		return (
-			<div className="modal-dialog date-picker-dialog">
-				<div className="date-picker-content">
-					<div className="date-picker-body">
+			<div className="modal-dialog date-select-dialog">
+				<div className="date-select-content">
+					<div className="date-select-body">
 						<DateSelectCalendar selectedDate={this.state.startDate} isHeaderless={this.props.isHeaderless} isInstant={this.props.isInstant} />
 						{this.props.isMulti && <DateSelectCalendar selectedDate={this.state.endDate} isHeaderless={this.props.isHeaderless} />}
 					</div>
 					{this.renderRanges()}
-					{!this.props.isInstant && <div className="date-picker-footer">
-						<button onClick={this.props.onChange} className="date-picker-footer-button primary">Confirm</button>
-						<button onClick={this.props.onCancel} className="date-picker-footer-button">Cancel</button>
+					{!this.props.isInstant && <div className="date-select-footer">
+						<button onClick={this.props.onChange} className="date-select-footer-button primary">Confirm</button>
+						<button onClick={this.props.onCancel} className="date-select-footer-button">Cancel</button>
 					</div>}
 				</div>
 			</div>
@@ -69,12 +69,12 @@ module.exports = React.createClass({
 				});
 				console.log(moment().format() + ' to ' + r.value.format());
 			};
-			return <button key={'range-button' + i} onClick={action} className="date-picker-range">{r.label}</button>;
+			return <button key={'range-button' + i} onClick={action} className="date-select-range">{r.label}</button>;
 		});
 		return (
-			<div className="date-picker-ranges">
-				<div className="date-picker-ranges-header">Select:</div>
-				<div className="date-picker-ranges-body">
+			<div className="date-select-ranges">
+				<div className="date-select-ranges-header">Select:</div>
+				<div className="date-select-ranges-body">
 					{rangeItems}
 				</div>
 			</div>
@@ -82,14 +82,14 @@ module.exports = React.createClass({
 	},
 	renderBackdrop() {
 		return (
-			<div className="modal-backdrop date-picker-backdrop" onClick={this.props.backdropClosesDateSelect ? this.props.onCancel : null} />
+			<div className="modal-backdrop date-select-backdrop" onClick={this.props.backdropClosesDateSelect ? this.props.onCancel : null} />
 		);
 	},
 	render() {
 		var self = this;
 		
 		// classes
-		var componentClass = classNames('date-picker', {
+		var componentClass = classNames('date-select', {
 			'single-picker': !this.props.isMulti,
 			'multi-picker': this.props.isMulti,
 			'range-picker': this.props.showPredefinedRanges
