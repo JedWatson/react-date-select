@@ -1,0 +1,57 @@
+{
+  "name": "react-date-select",
+  "version": "0.0.0",
+  "description": "A Date Select / Picker Input Component built with and for ReactJS",
+  "main": "lib/Select.js",
+  "author": "Jed Watson",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JedWatson/react-date-select.git"
+  },
+  "dependencies": {
+    "classnames": "^1.2.0",
+    "lodash": "^3.7.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^3.0.1",
+    "babel-jest": "^5.0.1",
+    "eslint": "^0.19.0",
+    "eslint-plugin-react": "^2.1.1",
+    "gulp": "^3.8.11",
+    "jest-cli": "^0.4.0",
+    "react": ">=0.12.0",
+    "react-component-gulp-tasks": "^0.4.6"
+  },
+  "peerDependencies": {
+    "react": ">=0.12.0"
+  },
+  "browserify-shim": {
+    "classnames": "global:classNames",
+    "react": "global:React",
+    "lodash": "global:_"
+  },
+  "scripts": {
+    "test": "jest; true",
+    "lint": "eslint ./; true"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react"
+    ],
+    "testPathDirs": [
+      "<rootDir>/src"
+    ]
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "date",
+    "datepicker",
+    "dateinput",
+    "input",
+    "form",
+    "ui"
+  ]
+}
