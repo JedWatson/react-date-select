@@ -2,142 +2,50 @@
 (function (global){
 'use strict';
 
-var React = require('react/addons');
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
-var moment = require('moment');
-var classNames = (typeof window !== "undefined" ? window.classNames : typeof global !== "undefined" ? global.classNames : null);
+var React = (typeof window !== "undefined" ? window.React : typeof global !== "undefined" ? global.React : null);
 
-var DateSelectCalendar = require('./DateSelectCalendar');
+var DateSelectDialog = require('./DateSelectDialog');
 
-var DEFAULT_RANGES = [{ value: moment().subtract(1, 'weeks'), label: 'Past week' }, { value: moment().subtract(1, 'months'), label: 'Past month' }, { value: moment().subtract(3, 'months'), label: 'Past 3 months' }, { value: moment().subtract(6, 'months'), label: 'Past 6 months' }, { value: moment().subtract(12, 'months'), label: 'Past 12 months' }];
-
-module.exports = React.createClass({
+var DateSelect = React.createClass({
 	displayName: 'DateSelect',
-	propTypes: {
-		isOpen: React.PropTypes.bool,
-		isMulti: React.PropTypes.bool,
-		showPredefinedRanges: React.PropTypes.bool,
-		predefinedRangeOptions: React.PropTypes.array,
-		backdropClosesDateSelect: React.PropTypes.bool,
 
-		isExpanded: React.PropTypes.bool,
-		isInstant: React.PropTypes.bool,
-		isHeaderless: React.PropTypes.bool,
-
-		customClass: React.PropTypes.string
-	},
 	getDefaultProps: function getDefaultProps() {
 		return {
-			predefinedRangeOptions: DEFAULT_RANGES
+			buttonLabel: 'Launch Date Select'
 		};
 	},
 	getInitialState: function getInitialState() {
 		return {
-			startDate: '',
-			endDate: ''
+			isOpen: false
 		};
 	},
-	toggleDropdown: function toggleDropdown() {
-		this.setState({ dropdownOpen: !this.state.dropdownOpen });
+	openDateSelect: function openDateSelect() {
+		this.setState({ isOpen: true });
+	},
+	closeDateSelect: function closeDateSelect() {
+		this.setState({ isOpen: false });
+	},
+	renderDateSelect: function renderDateSelect() {
+		return this.state.isOpen ? React.createElement(DateSelectDialog, this.props) : null;
 	},
 	render: function render() {
-		var self = this;
-
-		// ranges
-
-		var ranges;
-		if (this.props.showPredefinedRanges) {
-			var rangeItems = this.props.predefinedRangeOptions.map(function (r, i) {
-				function action() {
-					self.setState({
-						startDate: moment().format('D'),
-						endDate: r.value.format('D')
-					});
-					console.log(moment().format() + ' to ' + r.value.format());
-				};
-				return React.createElement(
-					'button',
-					{ key: 'range-button' + i, onClick: action, className: 'date-picker-range' },
-					r.label
-				);
-			});
-
-			ranges = React.createElement(
-				'div',
-				{ className: 'date-picker-ranges' },
-				React.createElement(
-					'div',
-					{ className: 'date-picker-ranges-header' },
-					'Select:'
-				),
-				React.createElement(
-					'div',
-					{ className: 'date-picker-ranges-body' },
-					rangeItems
-				)
-			);
-		}
-
-		// classes
-
-		var componentClass = classNames('date-picker', {
-			'single-picker': !this.props.isMulti,
-			'multi-picker': this.props.isMulti,
-			'range-picker': this.props.showPredefinedRanges
-		}, this.props.customClass);
-
-		// build the components
-
-		var datePickerBackground = this.props.isOpen ? React.createElement('div', { className: 'modal-backdrop date-picker-backdrop', onClick: this.props.backdropClosesDateSelect ? this.props.onChange : null }) : null;
-		var datePickerDialog = this.props.isOpen ? React.createElement(
-			'div',
-			{ className: 'modal-dialog date-picker-dialog' },
-			React.createElement(
-				'div',
-				{ className: 'date-picker-content' },
-				React.createElement(
-					'div',
-					{ className: 'date-picker-body' },
-					React.createElement(DateSelectCalendar, { selectedDate: this.state.startDate, isHeaderless: this.props.isHeaderless, isInstant: this.props.isInstant }),
-					this.props.isMulti && React.createElement(DateSelectCalendar, { selectedDate: this.state.endDate, isHeaderless: this.props.isHeaderless })
-				),
-				ranges,
-				!this.props.isInstant && React.createElement(
-					'div',
-					{ className: 'date-picker-footer' },
-					React.createElement(
-						'button',
-						{ onClick: this.props.onChange, className: 'date-picker-footer-button primary' },
-						'Confirm'
-					),
-					React.createElement(
-						'button',
-						{ onClick: this.props.onChange, className: 'date-picker-footer-button' },
-						'Cancel'
-					)
-				)
-			)
-		) : null;
-
 		return React.createElement(
 			'div',
-			{ className: componentClass },
+			null,
 			React.createElement(
-				ReactCSSTransitionGroup,
-				{ transitionName: 'modal-dialog', component: 'div' },
-				datePickerDialog
+				'button',
+				{ onClick: this.openDateSelect, type: 'button', className: 'btn btn-default' },
+				this.props.buttonLabel
 			),
-			React.createElement(
-				ReactCSSTransitionGroup,
-				{ transitionName: 'modal-background', component: 'div' },
-				datePickerBackground
-			)
+			this.renderDateSelect()
 		);
 	}
 });
 
+module.exports = DateSelect;
+
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./DateSelectCalendar":3,"moment":2,"react/addons":undefined}],2:[function(require,module,exports){
+},{"./DateSelectDialog":4}],2:[function(require,module,exports){
 //! moment.js
 //! version : 2.10.2
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -3262,7 +3170,6 @@ module.exports = React.createClass({
 	},
 
 	render: function render() {
-		console.log('calendar selected day', this.props.selectedDate);
 		var self = this;
 		var firstDayOfMonth = moment().startOf('month').format('D');
 		var lastDayOfMonth = moment().endOf('month').format('D');
@@ -3305,7 +3212,7 @@ module.exports = React.createClass({
 			});
 			return React.createElement(
 				'button',
-				{ key: 'day' + day, onClick: self.handleDaySelection.bind(this, day), className: dayClass },
+				{ key: 'day' + day, onClick: self.handleDaySelection.bind(self, day), className: dayClass },
 				day
 			);
 		});
@@ -3370,7 +3277,144 @@ module.exports = React.createClass({
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./DateSelectHeader":4,"moment":2,"react/addons":undefined}],4:[function(require,module,exports){
+},{"./DateSelectHeader":5,"moment":2,"react/addons":undefined}],4:[function(require,module,exports){
+(function (global){
+'use strict';
+
+var React = require('react/addons');
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+var moment = require('moment');
+var classNames = (typeof window !== "undefined" ? window.classNames : typeof global !== "undefined" ? global.classNames : null);
+
+var DateSelectCalendar = require('./DateSelectCalendar');
+
+var DEFAULT_RANGES = [{ value: moment().subtract(1, 'weeks'), label: 'Past week' }, { value: moment().subtract(1, 'months'), label: 'Past month' }, { value: moment().subtract(3, 'months'), label: 'Past 3 months' }, { value: moment().subtract(6, 'months'), label: 'Past 6 months' }, { value: moment().subtract(12, 'months'), label: 'Past 12 months' }];
+
+module.exports = React.createClass({
+	displayName: 'DateSelectDialog',
+	propTypes: {
+		isMulti: React.PropTypes.bool,
+		showPredefinedRanges: React.PropTypes.bool,
+		predefinedRangeOptions: React.PropTypes.array,
+		backdropClosesDateSelect: React.PropTypes.bool,
+
+		isExpanded: React.PropTypes.bool,
+		isInstant: React.PropTypes.bool,
+		isHeaderless: React.PropTypes.bool,
+
+		customClass: React.PropTypes.string
+	},
+	getDefaultProps: function getDefaultProps() {
+		return {
+			predefinedRangeOptions: DEFAULT_RANGES
+		};
+	},
+	getInitialState: function getInitialState() {
+		return {
+			startDate: '',
+			endDate: ''
+		};
+	},
+	toggleDropdown: function toggleDropdown() {
+		this.setState({ dropdownOpen: !this.state.dropdownOpen });
+	},
+
+	renderDialog: function renderDialog() {
+		return React.createElement(
+			'div',
+			{ className: 'modal-dialog date-picker-dialog' },
+			React.createElement(
+				'div',
+				{ className: 'date-picker-content' },
+				React.createElement(
+					'div',
+					{ className: 'date-picker-body' },
+					React.createElement(DateSelectCalendar, { selectedDate: this.state.startDate, isHeaderless: this.props.isHeaderless, isInstant: this.props.isInstant }),
+					this.props.isMulti && React.createElement(DateSelectCalendar, { selectedDate: this.state.endDate, isHeaderless: this.props.isHeaderless })
+				),
+				this.renderRanges(),
+				!this.props.isInstant && React.createElement(
+					'div',
+					{ className: 'date-picker-footer' },
+					React.createElement(
+						'button',
+						{ onClick: this.props.onChange, className: 'date-picker-footer-button primary' },
+						'Confirm'
+					),
+					React.createElement(
+						'button',
+						{ onClick: this.props.onCancel, className: 'date-picker-footer-button' },
+						'Cancel'
+					)
+				)
+			)
+		);
+	},
+	renderRanges: function renderRanges() {
+		if (!this.props.showPredefinedRanges) {
+			return;
+		}var rangeItems = this.props.predefinedRangeOptions.map(function (r, i) {
+			function action() {
+				self.setState({
+					startDate: moment().format('D'),
+					endDate: r.value.format('D')
+				});
+				console.log(moment().format() + ' to ' + r.value.format());
+			};
+			return React.createElement(
+				'button',
+				{ key: 'range-button' + i, onClick: action, className: 'date-picker-range' },
+				r.label
+			);
+		});
+		return React.createElement(
+			'div',
+			{ className: 'date-picker-ranges' },
+			React.createElement(
+				'div',
+				{ className: 'date-picker-ranges-header' },
+				'Select:'
+			),
+			React.createElement(
+				'div',
+				{ className: 'date-picker-ranges-body' },
+				rangeItems
+			)
+		);
+	},
+	renderBackdrop: function renderBackdrop() {
+		return React.createElement('div', { className: 'modal-backdrop date-picker-backdrop', onClick: this.props.backdropClosesDateSelect ? this.props.onCancel : null });
+	},
+	render: function render() {
+		var self = this;
+
+		// classes
+		var componentClass = classNames('date-picker', {
+			'single-picker': !this.props.isMulti,
+			'multi-picker': this.props.isMulti,
+			'range-picker': this.props.showPredefinedRanges
+		}, this.props.customClass);
+
+		// build the components
+		return React.createElement(
+			'div',
+			{ className: componentClass },
+			React.createElement(
+				ReactCSSTransitionGroup,
+				{ transitionName: 'modal-dialog', component: 'div' },
+				this.renderDialog()
+			),
+			React.createElement(
+				ReactCSSTransitionGroup,
+				{ transitionName: 'modal-background', component: 'div' },
+				this.renderBackdrop()
+			)
+		);
+	}
+});
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./DateSelectCalendar":3,"moment":2,"react/addons":undefined}],5:[function(require,module,exports){
 (function (global){
 'use strict';
 
