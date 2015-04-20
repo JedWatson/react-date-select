@@ -34,9 +34,9 @@ module.exports = React.createClass({
 						{this.props.isMulti && <DateSelectCalendar selectedDate={this.state.endDate} isHeaderless={this.props.isHeaderless} />}
 					</div>
 					{this.renderRanges()}
-					{!this.props.isInstant && <div className="date-picker-footer">
-						<button onClick={this.props.onSelect} className="btn date-picker-footer-button primary">Confirm</button>
-						<button onClick={this.props.onCancel} className="btn date-picker-footer-button">Cancel</button>
+					{!this.props.isInstant && <div className="date-select-footer">
+						<button onClick={this.props.onSelect} className="date-select-footer-button primary">Confirm</button>
+						<button onClick={this.props.onCancel} className="date-select-footer-button">Cancel</button>
 					</div>}
 				</div>
 			</div>
