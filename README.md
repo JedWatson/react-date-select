@@ -1,3 +1,8 @@
+Under Development
+=================
+
+**NOTE** This component is currently under development and _doesn't actually work yet_. If you're interested, please add a star / watch the repo and we'll have it ready for use very soon! Thanks :)
+
 React-Date-Select
 =================
 
