@@ -8,26 +8,8 @@
 // Colours
 // ------------------------------
 
-@app-primary:             #1076e5;
-
-@app-danger:              #d64242;
-@app-info:                #56cdfc;
-@app-success:             #52cc5c;
-@app-warning:             #fa9f47;
-
-@gray-base:               #000;
-@gray-darker:             #222;
-@gray-dark:               #333;
-@gray:                    #666;
-@gray-light:              #999;
-@gray-lighter:            #eee;
-
-@body-bg:                 #fefefe;
-@text-color:              @gray-dark;
-@heading-color:           @gray-darker;
-
-@link-color:              @app-primary;
-@link-hover-color:        lighten(@link-color, 10%);
+@text-color:              #333;
+@heading-color:           #222;
 
 
 
@@ -35,61 +17,9 @@
 // Typography
 // ------------------------------
 
-@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
-@font-family-serif:       Georgia, "Times New Roman", Times, serif;
-@font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
-@font-family-base:        @font-family-sans-serif;
+@dateselect-font-family:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+@dateselect-font-size:    14px;
 
-@line-height-base:        1.4;
-
-@link-hover-decoration:    underline;
-
-@font-size-base:              14px;
-@font-size-xs: @font-size-base - 4;
-@font-size-sm: @font-size-base - 2;
-@font-size-lg: @font-size-base + 4;
-
-@font-weight-bold:             500;
-
-
-// used on inputs and buttons
-
-@component-line-height:      2.3em;
-@component-height:           2.4em;
-@component-padding:            1em;
-
-
-
-
-// Buttons
-// ------------------------------
-
-
-@btn-font-weight:                500;
-
-@btn-padding-horizontal:         1em;
-
-@btn-default-color:              @app-primary;
-@btn-default-border:             mix(@app-primary, @body-bg, 60%);
-@btn-default-disabled-bg:        darken(@body-bg, 4%);
-
-@btn-primary-color:              white;
-@btn-primary-bg:                 @app-primary;
-@btn-primary-border:             @btn-primary-bg;
-
-@btn-success-color:              @app-success;
-@btn-success-bg:                 @app-success;
-@btn-success-border:             mix(@app-success, @body-bg, 60%);
-
-@btn-warning-color:              @app-warning;
-@btn-warning-bg:                 @app-warning;
-@btn-warning-border:             mix(@app-warning, @body-bg, 60%);
-
-@btn-danger-color:               @app-danger;
-@btn-danger-bg:                  @app-danger;
-@btn-danger-border:              mix(@app-danger, @body-bg, 60%);
-
-@btn-link-disabled-color:        @gray-light;
 
 
 
@@ -97,8 +27,8 @@
 // Modals
 // ------------------------------
 
-@datepicker-bg:                    white;
-@datepicker-backdrop-bg:           rgba(0, 0, 0, 0.5);
+@dateselect-bg:                    white;
+@dateselect-backdrop-bg:           rgba(0, 0, 0, 0.5);
 
 
 
@@ -106,22 +36,28 @@
 // Date Picker
 // ------------------------------
 
-@datepicker-bg:                  #fafafa;
-@datepicker-header-bg:           desaturate(@app-primary, 20%);
-@datepicker-footer-bg:           darken(@datepicker-bg, 5%);
-@datepicker-footer-border:       darken(@datepicker-bg, 15%);
+@dateselect-primary:             #1076e5;
 
-@datepicker-selected-day-bg:       @app-primary;
-@datepicker-selected-day-color:    white;
-@datepicker-current-day-bg:      darken(@datepicker-bg, 3%);
-@datepicker-current-day-border:  darken(@datepicker-bg, 15%);
+@dateselect-bg:                  #fafafa;
+@dateselect-header-bg:           desaturate(@dateselect-primary, 20%);
+@dateselect-footer-bg:           darken(@dateselect-bg, 5%);
+@dateselect-footer-border:       darken(@dateselect-bg, 15%);
+@dateselect-footer-color:        #666;
 
-@datepicker-padding:             8px;
-@datepicker-dialog-width:        280px;
-@datepicker-ranges-width:        140px;
+@dateselect-selected-day-bg:     @dateselect-primary;
+@dateselect-selected-day-color:  white;
+@dateselect-current-day-bg:      darken(@dateselect-bg, 3%);
+@dateselect-current-day-border:  darken(@dateselect-bg, 15%);
 
-@datepicker-title-button-height: 30px;
-@datepicker-title-button-width:  20px;
+@dateselect-legend-color:        #999;
+@dateselect-range-color:         #666;
+
+@dateselect-padding:             8px;
+@dateselect-dialog-width:        280px;
+@dateselect-ranges-width:        140px;
+
+@dateselect-title-button-height: 30px;
+@dateselect-title-button-width:  20px;
 
 
 
@@ -129,8 +65,8 @@
 // Z-Index List
 // ------------------------------
 
-@datepicker-zindex:                   110;
-@datepicker-zindex-backdrop:          @datepicker-zindex - 1;
+@dateselect-zindex:                   110;
+@dateselect-zindex-backdrop:          @dateselect-zindex - 1;
 
 
 
@@ -138,13 +74,8 @@
 // Misc
 // ------------------------------
 
-@demo-container-width:        768px;
-
-@datepicker-border-radius-outer:         .33em;
-@datepicker-border-radius-inner:           .25em;
-
-@spinner-dot-size:             8px;
-@spinner-dot-bg:               @gray-light;
+@dateselect-border-radius-outer:         .33em;
+@dateselect-border-radius-inner:           .25em;
 
 
 
@@ -176,35 +107,6 @@
 @screen-xs-max:              (@screen-sm-min - 1);
 @screen-sm-max:              (@screen-md-min - 1);
 @screen-md-max:              (@screen-lg-min - 1);
-
-
-
-
-// Grid
-// ------------------------------
-
-@grid-columns:              12;
-@grid-gutter-width:         20px;
-@grid-float-breakpoint:     @screen-sm-min;
-@grid-float-breakpoint-max: (@grid-float-breakpoint - 1);
-
-
-
-
-// Container sizes
-// ------------------------------
-
-// Small screen / tablet
-@container-tablet:             (720px + @grid-gutter-width);
-@container-sm:                 @container-tablet;
-
-// Medium screen / desktop
-@container-desktop:            (940px + @grid-gutter-width);
-@container-md:                 @container-desktop;
-
-// Large screen / wide desktop
-@container-large-desktop:      (1140px + @grid-gutter-width);
-@container-lg:                 @container-large-desktop;
 
 
 
