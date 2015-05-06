@@ -27,7 +27,7 @@ module.exports = React.createClass({
 	},
 	renderDialog() {
 		return (
-			<div className="DateSelect-dialog modal-dialog">
+			<div className="DateSelect-dialog">
 				<div className="DateSelect-content">
 					<div className="DateSelect-body">
 						<DateSelectCalendar selectedDate={this.state.startDate} isHeaderless={this.props.isHeaderless} isInstant={this.props.isInstant} />
@@ -65,7 +65,7 @@ module.exports = React.createClass({
 	},
 	renderBackdrop() {
 		return (
-			<div className="DateSelect-backdrop modal-backdrop" onClick={this.props.backdropClosesDateSelect ? this.props.onCancel : null} />
+			<div className="DateSelect-backdrop" onClick={this.props.backdropClosesDateSelect ? this.props.onCancel : null} />
 		);
 	},
 	render() {

@@ -36,16 +36,16 @@
 	right: 0;
 	top: 0;
 	width: 100%;
-	z-index: @zindex-modal;
+	z-index: @datepicker-zindex;
 }
 .DateSelect-dialog-enter {
-	.animation-name( modalDialogEnter );
+	.animation-name( DateSelectDialogEnter );
 	.animation-duration( 280ms );
 	.animation-timing-function( cubic-bezier(0.680, -0.550, 0.265, 1.550) );
 }
 .DateSelect-dialog-leave {
 	.animation-duration( 140ms );
-	.animation-name( modalDialogLeave );
+	.animation-name( DateSelectDialogLeave );
 }
 
 
@@ -573,7 +573,7 @@
 // ------------------------------
 
 @media (min-width: @screen-sm) {
-	.modal-dialog.DateSelect-dialog {
+	.DateSelect-dialog {
 		margin-bottom: 100px;
 		margin-top: 100px;
 		width: @datepicker-dialog-width;
@@ -614,6 +614,78 @@
 			}
 		}
 	}
+}
+
+
+
+
+// Background
+// ------------------------------
+
+.DateSelect-backdrop {
+	.animation-duration( 140ms );
+	background-color: @datepicker-backdrop-bg;
+	height: 100%;
+	left: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: @datepicker-zindex-backdrop;
+}
+.DateSelect-background-enter {
+	.animation-name( DateSelectBackdropEnter );
+}
+.DateSelect-background-leave {
+	.animation-delay( 240ms );
+	.animation-name( DateSelectBackdropLeave );
+}
+
+
+
+
+// Animation
+// --------------------
+
+
+// modal dialog
+
+@-webkit-keyframes DateSelectDialogEnter {
+	from { opacity: 0; -webkit-transform: scale( .8 ); }
+	to { opacity: 1; -webkit-transform: scale( 1 ); }
+}
+@keyframes DateSelectDialogEnter {
+	from { opacity: 0; transform: scale( .8 ); }
+	to { opacity: 1; transform: scale( 1 ); }
+}
+
+@-webkit-keyframes DateSelectDialogLeave {
+	from { opacity: 1; -webkit-transform: scale( 1 ); }
+	to { opacity: 0; -webkit-transform: scale( .8 ); }
+}
+@keyframes DateSelectDialogLeave {
+	from { opacity: 1; transform: scale( 1 ); }
+	to { opacity: 0; transform: scale( .8 ); }
+}
+
+
+// modal backdrop
+
+@-webkit-keyframes DateSelectBackdropEnter {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+@keyframes DateSelectBackdropEnter {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+@-webkit-keyframes DateSelectBackdropLeave {
+	from { opacity: 1; }
+	to { opacity: 0; }
+}
+@keyframes DateSelectBackdropLeave {
+	from { opacity: 1; }
+	to { opacity: 0; }
 }
 
 
