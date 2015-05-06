@@ -5,25 +5,17 @@
 
 
 // normalize
-/*html {
+html {
 	font-family: sans-serif;
 }
 body {
 	background-color: white;
 	color: #333;
-	font-size: 14px;
+	font-size: 16px;
+	font-weight: 300;
 	line-height: 1.4;
 	margin: 0;
-}*/
-
-// scaffolding
-/** {
-	.box-sizing(border-box);
 }
-*:before,
-*:after {
-	.box-sizing(border-box);
-}*/
 
 
 
@@ -36,7 +28,13 @@ body {
 	padding: 1em;
 }
 
-.footer {
+.example-header {
+	margin-bottom: 50px;
+	border-bottom: 1px solid #ccc;
+	padding: 20px 0;
+}
+
+.example-footer {
 	margin-top: 50px;
 	border-top: 1px solid #ccc;
 	padding: 20px 0;
@@ -55,17 +53,22 @@ a {
 		text-decoration: underline;
 	}
 }
-
-hr {
-	border: none;
-	border-top: 1px solid #ccc;
-	margin: 40px 0;
+p {
+	margin-top: 2em;
 }
-
 h1, h2, h3, h4, h5, h6 {
 	color: #222;
-	font-weight: 300;
-	margin: 40px 0 10px;
+	margin: 0;
+}
+
+
+// Small Devices
+
+@media (max-width: 480px) {
+	body {
+		font-size: 14px;
+		font-weight: 400;
+	}
 }
 
 
