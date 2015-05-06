@@ -487,14 +487,69 @@
 		padding: (@datepicker-padding * 1.5) (@datepicker-padding * 2);
 	}
 	.date-select-footer-button {
-		border-radius: @border-radius-sm;
+		background: none;
+		border-radius: .25em;
 		border: 0;
+		border: 1px solid transparent;
+		cursor: pointer;
+		display: inline-block;
 		display: inline-block;
 		float: none;
+		font-size: inherit;
+		font-weight: 500;
+		height: 2.4em;
+		line-height: 2.3em;
+		margin-bottom: 0;
+		overflow: hidden; // contain gradient on IE9
+		padding: 0 1em;
+		text-align: center;
+		touch-action: manipulation;
+		vertical-align: middle;
+		white-space: nowrap;
 		width: 80px;
+		-webkit-appearance: none;
+
+		&:hover,
+		&:focus,
+		&.focus {
+			color: @btn-default-color;
+			text-decoration: none;
+		}
+
+		&:active,
+		&.active {
+			background-image: none;
+			outline: 0;
+		}
+
+		&.disabled,
+		&[disabled] {
+			opacity: .4;
+			pointer-events: none;
+		}
 
 		&.primary {
-			.btn-primary();
+			#gradient .vertical(lighten(@app-primary, 4%), darken(@app-primary, 4%));
+			background-color: @app-primary;
+			color: white;
+
+			&:hover,
+			&:focus,
+			&.focus {
+				#gradient .vertical(lighten(@app-primary, 8%), @app-primary);
+				color: white;
+				outline: none;
+			}
+			&:focus,
+			&.focus {
+				box-shadow: 0 0 0 1px @body-bg, 0 0 0 3px fade(@app-primary, 25%);
+			}
+			&:active,
+			&.active {
+				background-color: darken(@app-primary, 5%);
+				background-image: none;
+				box-shadow: none;
+			}
 		}
 	}
 }
