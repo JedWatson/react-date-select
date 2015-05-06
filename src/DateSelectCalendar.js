@@ -40,9 +40,9 @@ module.exports = React.createClass({
 		var lastDayOfMonth  = moment().endOf('month').format('D');
 		var currentDayOfMonth  = moment().format('D');
 
-		var calendarClass = classNames('date-select-calendar', {
-			'date-select-calendar--start': this.props.startDate,
-			'date-select-calendar--end': this.props.endDate
+		var calendarClass = classNames('DateSelect-calendar', {
+			'DateSelect-calendar--start': this.props.startDate,
+			'DateSelect-calendar--end': this.props.endDate
 		});
 
 
@@ -64,10 +64,10 @@ module.exports = React.createClass({
 		// elements
 		
 		var weekDays = daysOfTheWeek.map(function(day, i) {
-			return <abbr key={'day' + i} className="date-select-calendar-legend-day" title={day}>{day.slice(0,1)}</abbr>
+			return <abbr key={'day' + i} className="DateSelect-calendar-legend-day" title={day}>{day.slice(0,1)}</abbr>
 		});
 		var monthDays = daysOfTheMonth.map(function(day) {
-			var dayClass = classNames('date-select-calendar-month-day', {
+			var dayClass = classNames('DateSelect-calendar-month-day', {
 				'current-day': day == currentDayOfMonth,
 				'selected-day': day == self.state.selectedDate,
 				'before-selected-day': self.state.selectedDate && (day < self.state.selectedDate),
@@ -85,14 +85,14 @@ module.exports = React.createClass({
 
 		var calendar = <div className={calendarClass}>
 			{!this.props.isHeaderless && <DateSelectHeader selectedDate={this.state.selectedDate} isExpanded={this.props.isExpanded} />}
-			<div className="date-select-calendar-toolbar">
-				<button className="date-select-calendar-toolbar-button-prev">Previous Month</button>
-				<select className="date-select-calendar-toolbar-select" defaultValue={currentMonth}>{titleMonths}</select>
-				<select className="date-select-calendar-toolbar-select" defaultValue={currentYear}>{titleYears}</select>
-				<button className="date-select-calendar-toolbar-button-next">Next Month</button>
+			<div className="DateSelect-calendar-toolbar">
+				<button className="DateSelect-calendar-toolbar-button-prev">Previous Month</button>
+				<select className="DateSelect-calendar-toolbar-select" defaultValue={currentMonth}>{titleMonths}</select>
+				<select className="DateSelect-calendar-toolbar-select" defaultValue={currentYear}>{titleYears}</select>
+				<button className="DateSelect-calendar-toolbar-button-next">Next Month</button>
 			</div>
-			<div className="date-select-calendar-legend">{weekDays}</div>
-			<div className="date-select-calendar-month">{monthDays}</div>
+			<div className="DateSelect-calendar-legend">{weekDays}</div>
+			<div className="DateSelect-calendar-month">{monthDays}</div>
 		</div>
 		
 		return calendar;
