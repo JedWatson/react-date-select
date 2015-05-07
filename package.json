@@ -22,7 +22,7 @@
     "gulp": "^3.8.11",
     "jest-cli": "^0.4.0",
     "react": ">=0.12.0",
-    "react-component-gulp-tasks": "^0.6.2"
+    "react-component-gulp-tasks": "^0.7.0"
   },
   "peerDependencies": {
     "react": ">=0.12.0"
@@ -33,15 +33,16 @@
     "lodash": "global:_"
   },
   "scripts": {
-    "build": "NODE_ENV=production gulp build",
+    "build": "gulp clean && NODE_ENV=production gulp build",
     "bump": "gulp bump",
-    "bump-major": "gulp bump:major",
-    "bump-minor": "gulp bump:minor",
+    "bump:major": "gulp bump:major",
+    "bump:minor": "gulp bump:minor",
+    "dev": "gulp dev",
     "examples": "gulp dev:server",
     "lint": "eslint ./; true",
     "release": "gulp release",
-    "dev": "gulp dev",
-    "test": "jest; true"
+    "test": "jest; true",
+    "watch": "gulp watch:lib"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
