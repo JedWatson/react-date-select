@@ -50,12 +50,21 @@ var DateSelect = React.createClass({
 		dialogProps.onSelect = this.closeDateSelect;
 		return <DateSelectDialog {...dialogProps} />;
 	},
+	renderChildren () {
+		return React.Children.map(this.props.children, (child) => {
+			child.props.onClick = this.openDateSelect;
+			return child;
+		});
+	},
+	renderButton () {
+		return <button onClick={this.openDateSelect} type="button" className={this.props.buttonClassName}>{this.props.buttonLabel}</button>;
+	},
 	render () {
 		return (
-			<div>
-				<button onClick={this.openDateSelect} type="button" className="btn btn-default">{this.props.buttonLabel}</button>
+			<span>
+				{React.Children.count(this.props.children) ? this.renderChildren() : this.renderButton()}
 				{this.renderDateSelect()}
-			</div>
+			</span>
 		);
 	}
 });
