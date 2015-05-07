@@ -13,9 +13,19 @@
 .DateSelect {
 	font-size: @DateSelect-font-size;
 	font-family: @DateSelect-font-family;
+	-webkit-font-smoothing: antialiased;
 	
 	* {
 		#DateSelect .box-sizing(border-box);
+	}
+	button,
+	input,
+	select {
+		font-size: inherit;
+		font-family: inherit;
+		margin: 0;
+		-webkit-appearance: none;
+		   -moz-appearance: none;
 	}
 }
 
@@ -111,8 +121,6 @@
 	line-height: @DateSelect-title-button-height;
 	padding-left: .5em;
 	padding-right: .5em;
-	-webkit-appearance: none;
-	   -moz-appearance: none;
 
 	&:focus {
 		color: @DateSelect-primary;
@@ -140,8 +148,6 @@
 	top: 0;
 	white-space: nowrap;
 	width: @DateSelect-title-button-width + (@DateSelect-padding * 2);
-	-webkit-appearance: none;
-	   -moz-appearance: none;
 
 	&:hover {
 		opacity: 1;
@@ -323,6 +329,7 @@
 // condensed
 
 .DateSelect-calendar-header--condensed {
+	font-weight: bold;
 	letter-spacing: 0.0125em;
 	padding: @DateSelect-padding;
 
@@ -358,36 +365,39 @@
 
 .DateSelect-ranges {
 	border-top: 1px solid @DateSelect-footer-border;
-	clear: left;
-	color: @DateSelect-range-color;
+	display: table;
 	font-size: .85em;
 	position: relative;
 	min-width: @DateSelect-ranges-width;
+	width: 100%;
 }
 
 
 // items
 
+.DateSelect-range-body {
+	color: @DateSelect-text-color;
+	display: table-cell;
+}
 .DateSelect-range {
 	#DateSelect .transition( color 200ms );
 	background-color: transparent;
 	background-image: none;
 	border: none;
-	float: left;
+	color: inherit;
+	cursor: pointer;
 	outline: none;
 	padding: @DateSelect-padding;
 	position: relative;
 	text-align: left;
-	-webkit-appearance: none;
-	   -moz-appearance: none;
 
 	&:hover {
-		color: @DateSelect-text-color;
+		color: darken(@DateSelect-text-color, 20%);
 	}
 	&.active,
 	&:focus {
 		box-shadow: 0 1px 0 @DateSelect-range-color;
-		color: @DateSelect-text-color;
+		color: darken(@DateSelect-text-color, 20%);
 
 		&:after {
 			border-bottom: 4px solid @DateSelect-range-color;
@@ -409,8 +419,8 @@
 // header
 
 .DateSelect-ranges-header {
-	float: left;
-	font-weight: 500;
+	color: @DateSelect-text-color;
+	display: table-cell;
 	padding: @DateSelect-padding;
 	padding-left: @DateSelect-padding * 2;
 }
@@ -418,8 +428,8 @@
 
 // body
 
-.DateSelect-ranges-body {
-	#DateSelect .clearfix();
+.DateSelect-ranges-body:hover {
+	color: lighten(@DateSelect-text-color, 20%);
 }
 
 
@@ -447,8 +457,6 @@
 	padding: @DateSelect-padding;
 	text-align: center;
 	width: 50%;
-	-webkit-appearance: none;
-	   -moz-appearance: none;
 
 	&:last-child {
 		border-left: 1px solid @DateSelect-footer-border;
@@ -518,7 +526,6 @@
 		vertical-align: middle;
 		white-space: nowrap;
 		width: 80px;
-		-webkit-appearance: none;
 
 		&:hover,
 		&:focus,
