@@ -1,6 +1,7 @@
-var _ = require('lodash');
+var blacklist = require('blacklist');
 var moment = require('moment');
 var React = require('react');
+
 
 var DateSelectDialog = require('./DateSelectDialog');
 
@@ -43,11 +44,11 @@ var DateSelect = React.createClass({
 	},
 	renderDateSelect () {
 		if (!this.state.isOpen) return;
-		var props = _.pick(this.props, ['value', 'isMulti', 'showPredefinedRanges', 'predefinedRangeOptions', 'backdropClosesDateSelect', 'isExpanded', 'isInstant', 'isHeaderless']);
-		props.className = this.props.dialogClassName;
-		props.onCancel = this.closeDateSelect;
-		props.onSelect = this.closeDateSelect;
-		return <DateSelectDialog {...props} />;
+		var dialogProps = blacklist(this.props, 'dialogClassName');
+		dialogProps.className = this.props.dialogClassName;
+		dialogProps.onCancel = this.closeDateSelect;
+		dialogProps.onSelect = this.closeDateSelect;
+		return <DateSelectDialog {...dialogProps} />;
 	},
 	render () {
 		return (
