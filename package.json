@@ -33,15 +33,15 @@
     "lodash": "global:_"
   },
   "scripts": {
-    "start": "gulp dev",
-    "test": "jest; true",
-    "lint": "eslint ./; true",
     "build": "NODE_ENV=production gulp build",
     "bump": "gulp bump",
-    "bump-minor": "gulp bump:minor",
     "bump-major": "gulp bump:major",
+    "bump-minor": "gulp bump:minor",
+    "examples": "gulp dev:server",
+    "lint": "eslint ./; true",
     "release": "gulp release",
-    "server": "gulp dev:server"
+    "dev": "gulp dev",
+    "test": "jest; true"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
