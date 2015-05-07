@@ -40,7 +40,8 @@
     "bump": "gulp bump",
     "bump-minor": "gulp bump:minor",
     "bump-major": "gulp bump:major",
-    "release": "gulp release"
+    "release": "gulp release",
+    "server": "gulp dev:server"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
