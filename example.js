@@ -26,32 +26,17 @@ var DateSelectExamples = React.createClass({
 			'div',
 			null,
 			React.createElement(
-				'h3',
-				null,
-				'Day Select'
-			),
-			React.createElement(
 				'p',
 				null,
 				'Pick a single date'
 			),
 			React.createElement(DateSelect, { value: this.state.singleDateValue, onChange: this.onDateChange.bind(this, 'singleDateValue') }),
 			React.createElement(
-				'h3',
-				null,
-				'Multi Select'
-			),
-			React.createElement(
 				'p',
 				null,
 				'Pick a start and end date'
 			),
 			React.createElement(DateSelect, { value: this.state.multiDateValue1, onChange: this.onDateChange.bind(this, 'multiDateValue1'), isMulti: true, buttonLabel: 'Launch range picker' }),
-			React.createElement(
-				'h3',
-				null,
-				'Multi Select with Ranges'
-			),
 			React.createElement(
 				'p',
 				null,
