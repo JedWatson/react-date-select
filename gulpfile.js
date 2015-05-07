@@ -6,10 +6,11 @@ var taskConfig = {
 	component: {
 		name: 'DateSelect',
 		dependencies: [
-			'react',
-			'react/addons',
+			'blacklist',
 			'classnames',
-			'lodash'
+			'moment',
+			'react',
+			'react/addons'
 		],
 		less: {
 			path: 'less',

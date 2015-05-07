@@ -28,9 +28,10 @@
     "react": ">=0.12.0"
   },
   "browserify-shim": {
+    "blacklist": "blobal:blacklist",
     "classnames": "global:classNames",
-    "react": "global:React",
-    "lodash": "global:_"
+    "moment": "global:moment",
+    "react": "global:React"
   },
   "scripts": {
     "build": "gulp clean && NODE_ENV=production gulp build",
