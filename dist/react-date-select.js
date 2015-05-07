@@ -42,9 +42,8 @@ var DateSelect = React.createClass({
 		this.setState({ isOpen: false });
 	},
 	renderDateSelect: function renderDateSelect() {
-		if (!this.state.isOpen) {
-			return;
-		}var props = _.pick(this.props, ['value', 'isMulti', 'showPredefinedRanges', 'predefinedRangeOptions', 'backdropClosesDateSelect', 'isExpanded', 'isInstant', 'isHeaderless']);
+		if (!this.state.isOpen) return;
+		var props = _.pick(this.props, ['value', 'isMulti', 'showPredefinedRanges', 'predefinedRangeOptions', 'backdropClosesDateSelect', 'isExpanded', 'isInstant', 'isHeaderless']);
 		props.className = this.props.dialogClassName;
 		props.onCancel = this.closeDateSelect;
 		props.onSelect = this.closeDateSelect;
@@ -3197,9 +3196,9 @@ module.exports = React.createClass({
 		var lastDayOfMonth = moment().endOf('month').format('D');
 		var currentDayOfMonth = moment().format('D');
 
-		var calendarClass = classNames('date-select-calendar', {
-			'date-select-calendar--start': this.props.startDate,
-			'date-select-calendar--end': this.props.endDate
+		var calendarClass = classNames('DateSelect-calendar', {
+			'DateSelect-calendar--start': this.props.startDate,
+			'DateSelect-calendar--end': this.props.endDate
 		});
 
 		// variables
@@ -3221,12 +3220,12 @@ module.exports = React.createClass({
 		var weekDays = daysOfTheWeek.map(function (day, i) {
 			return React.createElement(
 				'abbr',
-				{ key: 'day' + i, className: 'date-select-calendar-legend-day', title: day },
+				{ key: 'day' + i, className: 'DateSelect-calendar-legend-day', title: day },
 				day.slice(0, 1)
 			);
 		});
 		var monthDays = daysOfTheMonth.map(function (day) {
-			var dayClass = classNames('date-select-calendar-month-day', {
+			var dayClass = classNames('DateSelect-calendar-month-day', {
 				'current-day': day == currentDayOfMonth,
 				'selected-day': day == self.state.selectedDate,
 				'before-selected-day': self.state.selectedDate && day < self.state.selectedDate,
@@ -3260,36 +3259,36 @@ module.exports = React.createClass({
 			!this.props.isHeaderless && React.createElement(DateSelectHeader, { selectedDate: this.state.selectedDate, isExpanded: this.props.isExpanded }),
 			React.createElement(
 				'div',
-				{ className: 'date-select-calendar-toolbar' },
+				{ className: 'DateSelect-calendar-toolbar' },
 				React.createElement(
 					'button',
-					{ className: 'date-select-calendar-toolbar-button-prev' },
+					{ className: 'DateSelect-calendar-toolbar-button-prev' },
 					'Previous Month'
 				),
 				React.createElement(
 					'select',
-					{ className: 'date-select-calendar-toolbar-select', defaultValue: currentMonth },
+					{ className: 'DateSelect-calendar-toolbar-select', defaultValue: currentMonth },
 					titleMonths
 				),
 				React.createElement(
 					'select',
-					{ className: 'date-select-calendar-toolbar-select', defaultValue: currentYear },
+					{ className: 'DateSelect-calendar-toolbar-select', defaultValue: currentYear },
 					titleYears
 				),
 				React.createElement(
 					'button',
-					{ className: 'date-select-calendar-toolbar-button-next' },
+					{ className: 'DateSelect-calendar-toolbar-button-next' },
 					'Next Month'
 				)
 			),
 			React.createElement(
 				'div',
-				{ className: 'date-select-calendar-legend' },
+				{ className: 'DateSelect-calendar-legend' },
 				weekDays
 			),
 			React.createElement(
 				'div',
-				{ className: 'date-select-calendar-month' },
+				{ className: 'DateSelect-calendar-month' },
 				monthDays
 			)
 		);
@@ -3333,28 +3332,28 @@ module.exports = React.createClass({
 	renderDialog: function renderDialog() {
 		return React.createElement(
 			'div',
-			{ className: 'modal-dialog date-select-dialog' },
+			{ className: 'DateSelect-dialog' },
 			React.createElement(
 				'div',
-				{ className: 'date-select-content' },
+				{ className: 'DateSelect-content' },
 				React.createElement(
 					'div',
-					{ className: 'date-select-body' },
+					{ className: 'DateSelect-body' },
 					React.createElement(DateSelectCalendar, { selectedDate: this.state.startDate, isHeaderless: this.props.isHeaderless, isInstant: this.props.isInstant }),
 					this.props.isMulti && React.createElement(DateSelectCalendar, { selectedDate: this.state.endDate, isHeaderless: this.props.isHeaderless })
 				),
 				this.renderRanges(),
 				!this.props.isInstant && React.createElement(
 					'div',
-					{ className: 'date-select-footer' },
+					{ className: 'DateSelect-footer' },
 					React.createElement(
 						'button',
-						{ onClick: this.props.onSelect, className: 'date-select-footer-button primary' },
+						{ onClick: this.props.onSelect, className: 'DateSelect-footer-button primary' },
 						'Confirm'
 					),
 					React.createElement(
 						'button',
-						{ onClick: this.props.onCancel, className: 'date-select-footer-button' },
+						{ onClick: this.props.onCancel, className: 'DateSelect-footer-button' },
 						'Cancel'
 					)
 				)
@@ -3362,9 +3361,8 @@ module.exports = React.createClass({
 		);
 	},
 	renderRanges: function renderRanges() {
-		if (!this.props.showPredefinedRanges) {
-			return;
-		}var self = this;
+		if (!this.props.showPredefinedRanges) return;
+		var self = this;
 		var rangeItems = this.props.predefinedRangeOptions.map(function (r, i) {
 			function action() {
 				self.setState({
@@ -3374,31 +3372,31 @@ module.exports = React.createClass({
 			};
 			return React.createElement(
 				'button',
-				{ key: 'range-button' + i, onClick: action, className: 'date-select-range' },
+				{ key: 'range-button' + i, onClick: action, className: 'DateSelect-range' },
 				r.label
 			);
 		});
 		return React.createElement(
 			'div',
-			{ className: 'date-select-ranges' },
+			{ className: 'DateSelect-ranges' },
 			React.createElement(
 				'div',
-				{ className: 'date-select-ranges-header' },
+				{ className: 'DateSelect-ranges-header' },
 				'Select:'
 			),
 			React.createElement(
 				'div',
-				{ className: 'date-select-ranges-body' },
+				{ className: 'DateSelect-ranges-body' },
 				rangeItems
 			)
 		);
 	},
 	renderBackdrop: function renderBackdrop() {
-		return React.createElement('div', { className: 'modal-backdrop date-select-backdrop', onClick: this.props.backdropClosesDateSelect ? this.props.onCancel : null });
+		return React.createElement('div', { className: 'DateSelect-backdrop', onClick: this.props.backdropClosesDateSelect ? this.props.onCancel : null });
 	},
 	render: function render() {
 		// classes
-		var componentClass = classNames('date-select', {
+		var componentClass = classNames('DateSelect', {
 			'single-picker': !this.props.isMulti,
 			'multi-picker': this.props.isMulti,
 			'range-picker': this.props.showPredefinedRanges
@@ -3442,9 +3440,9 @@ module.exports = React.createClass({
 		var date = moment(this.props.date);
 
 		// classes
-		var componentClass = classNames('date-select-calendar-header', {
-			'date-select-calendar-header--expanded': this.props.expanded,
-			'date-select-calendar-header--condensed': !this.props.expanded,
+		var componentClass = classNames('DateSelect-calendar-header', {
+			'DateSelect-calendar-header--expanded': this.props.expanded,
+			'DateSelect-calendar-header--condensed': !this.props.expanded,
 			'no-date': !this.props.date
 		});
 
@@ -3455,22 +3453,22 @@ module.exports = React.createClass({
 			{ className: componentClass },
 			React.createElement(
 				'span',
-				{ className: 'date-select-calendar-header-dow' },
+				{ className: 'DateSelect-calendar-header-dow' },
 				date.format('dddd')
 			),
 			React.createElement(
 				'span',
-				{ className: 'date-select-calendar-header-month' },
+				{ className: 'DateSelect-calendar-header-month' },
 				date.format('MMMM')
 			),
 			React.createElement(
 				'span',
-				{ className: 'date-select-calendar-header-day' },
+				{ className: 'DateSelect-calendar-header-day' },
 				date.format('D')
 			),
 			React.createElement(
 				'span',
-				{ className: 'date-select-calendar-header-year' },
+				{ className: 'DateSelect-calendar-header-year' },
 				date.format('YYYY')
 			)
 		) : React.createElement(
@@ -3478,22 +3476,22 @@ module.exports = React.createClass({
 			{ className: componentClass },
 			React.createElement(
 				'span',
-				{ className: 'date-select-calendar-header-dow' },
+				{ className: 'DateSelect-calendar-header-dow' },
 				date.format('dddd')
 			),
 			React.createElement(
 				'span',
-				{ className: 'date-select-calendar-header-day' },
+				{ className: 'DateSelect-calendar-header-day' },
 				date.format('Do')
 			),
 			React.createElement(
 				'span',
-				{ className: 'date-select-calendar-header-month' },
+				{ className: 'DateSelect-calendar-header-month' },
 				date.format('MMMM')
 			),
 			React.createElement(
 				'span',
-				{ className: 'date-select-calendar-header-year' },
+				{ className: 'DateSelect-calendar-header-year' },
 				date.format('YYYY')
 			)
 		);
@@ -3504,22 +3502,22 @@ module.exports = React.createClass({
 				{ className: componentClass },
 				React.createElement(
 					'span',
-					{ className: 'date-select-calendar-header-dow' },
+					{ className: 'DateSelect-calendar-header-dow' },
 					date.format('dddd')
 				),
 				React.createElement(
 					'span',
-					{ className: 'date-select-calendar-header-month' },
+					{ className: 'DateSelect-calendar-header-month' },
 					date.format('MMMM')
 				),
 				React.createElement(
 					'span',
-					{ className: 'date-select-calendar-header-day' },
+					{ className: 'DateSelect-calendar-header-day' },
 					date.format('D')
 				),
 				React.createElement(
 					'span',
-					{ className: 'date-select-calendar-header-year' },
+					{ className: 'DateSelect-calendar-header-year' },
 					date.format('YYYY')
 				)
 			) : React.createElement(
@@ -3527,22 +3525,22 @@ module.exports = React.createClass({
 				{ className: componentClass },
 				React.createElement(
 					'span',
-					{ className: 'date-select-calendar-header-dow' },
+					{ className: 'DateSelect-calendar-header-dow' },
 					date.format('dddd')
 				),
 				React.createElement(
 					'span',
-					{ className: 'date-select-calendar-header-day' },
+					{ className: 'DateSelect-calendar-header-day' },
 					date.format('Do')
 				),
 				React.createElement(
 					'span',
-					{ className: 'date-select-calendar-header-month' },
+					{ className: 'DateSelect-calendar-header-month' },
 					date.format('MMMM')
 				),
 				React.createElement(
 					'span',
-					{ className: 'date-select-calendar-header-year' },
+					{ className: 'DateSelect-calendar-header-year' },
 					date.format('YYYY')
 				)
 			);

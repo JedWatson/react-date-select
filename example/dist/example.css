@@ -54,12 +54,22 @@ h6 {
 }
 .DateSelect {
   font-size: 14px;
-  font-family: sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 .DateSelect * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+.DateSelect button,
+.DateSelect input,
+.DateSelect select {
+  font-size: inherit;
+  font-family: inherit;
+  margin: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 .DateSelect-dialog {
   left: 0;
@@ -131,8 +141,6 @@ h6 {
   line-height: 30px;
   padding-left: .5em;
   padding-right: .5em;
-  -webkit-appearance: none;
-  -moz-appearance: none;
 }
 .DateSelect-calendar-toolbar-select:focus {
   color: #1076e5;
@@ -155,8 +163,6 @@ h6 {
   top: 0;
   white-space: nowrap;
   width: 36px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
 }
 .DateSelect-calendar-toolbar-button-prev:hover,
 .DateSelect-calendar-toolbar-button-next:hover {
@@ -243,12 +249,12 @@ h6 {
   color: #22558c;
 }
 .DateSelect-calendar-header {
-  background-image: -webkit-linear-gradient(top, #3381d7 0%, #256dbb 100%);
-  background-image: -o-linear-gradient(top, #3381d7 0%, #256dbb 100%);
-  background-image: linear-gradient(to bottom, #3381d7 0%, #256dbb 100%);
+  background-image: -webkit-linear-gradient(top, #2781e3 0%, #1a6dc7 100%);
+  background-image: -o-linear-gradient(top, #2781e3 0%, #1a6dc7 100%);
+  background-image: linear-gradient(to bottom, #2781e3 0%, #1a6dc7 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3381d7', endColorstr='#ff256dbb', GradientType=0);
-  background-color: #2977cd;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2781e3', endColorstr='#ff1a6dc7', GradientType=0);
+  background-color: #1c77d9;
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 white;
   color: white;
   display: block;
@@ -286,6 +292,7 @@ h6 {
   padding-bottom: 10px;
 }
 .DateSelect-calendar-header--condensed {
+  font-weight: bold;
   letter-spacing: 0.0125em;
   padding: 8px;
 }
@@ -309,11 +316,15 @@ h6 {
 }
 .DateSelect-ranges {
   border-top: 1px solid #d4d4d4;
-  clear: left;
-  color: #666666;
+  display: table;
   font-size: .85em;
   position: relative;
   min-width: 140px;
+  width: 100%;
+}
+.DateSelect-range-body {
+  color: #333333;
+  display: table-cell;
 }
 .DateSelect-range {
   -webkit-transition: color 200ms;
@@ -322,21 +333,20 @@ h6 {
   background-color: transparent;
   background-image: none;
   border: none;
-  float: left;
+  color: inherit;
+  cursor: pointer;
   outline: none;
   padding: 8px;
   position: relative;
   text-align: left;
-  -webkit-appearance: none;
-  -moz-appearance: none;
 }
 .DateSelect-range:hover {
-  color: #333333;
+  color: #000000;
 }
 .DateSelect-range.active,
 .DateSelect-range:focus {
   box-shadow: 0 1px 0 #666666;
-  color: #333333;
+  color: #000000;
 }
 .DateSelect-range.active:after,
 .DateSelect-range:focus:after {
@@ -353,18 +363,13 @@ h6 {
   width: 0;
 }
 .DateSelect-ranges-header {
-  float: left;
-  font-weight: 500;
+  color: #333333;
+  display: table-cell;
   padding: 8px;
   padding-left: 16px;
 }
-.DateSelect-ranges-body:before,
-.DateSelect-ranges-body:after {
-  content: " ";
-  display: table;
-}
-.DateSelect-ranges-body:after {
-  clear: both;
+.DateSelect-ranges-body:hover {
+  color: #666666;
 }
 .DateSelect-footer {
   background-color: #ededed;
@@ -392,8 +397,6 @@ h6 {
   padding: 8px;
   text-align: center;
   width: 50%;
-  -webkit-appearance: none;
-  -moz-appearance: none;
 }
 .DateSelect-footer-button:last-child {
   border-left: 1px solid #d4d4d4;
@@ -439,7 +442,6 @@ h6 {
   vertical-align: middle;
   white-space: nowrap;
   width: 80px;
-  -webkit-appearance: none;
 }
 .multi-picker .DateSelect-footer-button:hover,
 .multi-picker .DateSelect-footer-button:focus,
@@ -514,7 +516,7 @@ h6 {
   }
   .multi-picker .DateSelect-calendar-header {
     border-radius: 0;
-    box-shadow: -1px 0 0 #205ea2;
+    box-shadow: -1px 0 0 #165eac;
   }
   .multi-picker .DateSelect-calendar {
     border-left: 1px solid #d4d4d4;
