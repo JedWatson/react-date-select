@@ -33,8 +33,14 @@
     "lodash": "global:_"
   },
   "scripts": {
+    "start": "gulp dev",
     "test": "jest; true",
-    "lint": "eslint ./; true"
+    "lint": "eslint ./; true",
+    "build": "NODE_ENV=production gulp build",
+    "bump": "gulp bump",
+    "bump-minor": "gulp bump:minor",
+    "bump-major": "gulp bump:major",
+    "release": "gulp release"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
