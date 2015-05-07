@@ -1,6 +1,6 @@
 {
   "name": "react-date-select",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A Date Select / Picker Input Component built with and for ReactJS",
   "main": "lib/DateSelect.js",
   "author": "Jed Watson",
