@@ -2,7 +2,7 @@
 (function (global){
 'use strict';
 
-var _ = (typeof window !== "undefined" ? window._ : typeof global !== "undefined" ? global._ : null);
+var blacklist = require('blacklist');
 var moment = require('moment');
 var React = (typeof window !== "undefined" ? window.React : typeof global !== "undefined" ? global.React : null);
 
@@ -43,11 +43,11 @@ var DateSelect = React.createClass({
 	},
 	renderDateSelect: function renderDateSelect() {
 		if (!this.state.isOpen) return;
-		var props = _.pick(this.props, ['value', 'isMulti', 'showPredefinedRanges', 'predefinedRangeOptions', 'backdropClosesDateSelect', 'isExpanded', 'isInstant', 'isHeaderless']);
-		props.className = this.props.dialogClassName;
-		props.onCancel = this.closeDateSelect;
-		props.onSelect = this.closeDateSelect;
-		return React.createElement(DateSelectDialog, props);
+		var dialogProps = blacklist(this.props, 'dialogClassName');
+		dialogProps.className = this.props.dialogClassName;
+		dialogProps.onCancel = this.closeDateSelect;
+		dialogProps.onSelect = this.closeDateSelect;
+		return React.createElement(DateSelectDialog, dialogProps);
 	},
 	render: function render() {
 		return React.createElement(
@@ -66,7 +66,28 @@ var DateSelect = React.createClass({
 module.exports = DateSelect;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./DateSelectDialog":4,"moment":2}],2:[function(require,module,exports){
+},{"./DateSelectDialog":5,"blacklist":2,"moment":3}],2:[function(require,module,exports){
+module.exports = function blacklist (src) {
+  var copy = {}, filter = arguments[1]
+
+  if (typeof filter === 'string') {
+    filter = {}
+    for (var i = 1; i < arguments.length; i++) {
+      filter[arguments[i]] = true
+    }
+  }
+
+  for (var key in src) {
+    // blacklist?
+    if (filter[key]) continue
+
+    copy[key] = src[key]
+  }
+
+  return copy
+}
+
+},{}],3:[function(require,module,exports){
 //! moment.js
 //! version : 2.10.2
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -3150,7 +3171,7 @@ module.exports = DateSelect;
     return _moment;
 
 }));
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -3298,7 +3319,7 @@ module.exports = React.createClass({
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./DateSelectHeader":5,"moment":2,"react/addons":undefined}],4:[function(require,module,exports){
+},{"./DateSelectHeader":6,"moment":3,"react/addons":undefined}],5:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -3421,7 +3442,7 @@ module.exports = React.createClass({
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./DateSelectCalendar":3,"moment":2,"react/addons":undefined}],5:[function(require,module,exports){
+},{"./DateSelectCalendar":4,"moment":3,"react/addons":undefined}],6:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -3551,5 +3572,5 @@ module.exports = React.createClass({
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"moment":2,"react/addons":undefined}]},{},[1])(1)
+},{"moment":3,"react/addons":undefined}]},{},[1])(1)
 });

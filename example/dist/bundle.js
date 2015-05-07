@@ -1,4 +1,25 @@
 require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+module.exports = function blacklist (src) {
+  var copy = {}, filter = arguments[1]
+
+  if (typeof filter === 'string') {
+    filter = {}
+    for (var i = 1; i < arguments.length; i++) {
+      filter[arguments[i]] = true
+    }
+  }
+
+  for (var key in src) {
+    // blacklist?
+    if (filter[key]) continue
+
+    copy[key] = src[key]
+  }
+
+  return copy
+}
+
+},{}],2:[function(require,module,exports){
 //! moment.js
 //! version : 2.10.2
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -3082,7 +3103,7 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
     return _moment;
 
 }));
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 'use strict';
 
 var React = require('react/addons');
@@ -3228,7 +3249,7 @@ module.exports = React.createClass({
 	}
 });
 
-},{"./DateSelectHeader":4,"classnames":undefined,"moment":1,"react/addons":undefined}],3:[function(require,module,exports){
+},{"./DateSelectHeader":5,"classnames":undefined,"moment":2,"react/addons":undefined}],4:[function(require,module,exports){
 'use strict';
 
 var React = require('react/addons');
@@ -3349,7 +3370,7 @@ module.exports = React.createClass({
 	}
 });
 
-},{"./DateSelectCalendar":2,"classnames":undefined,"moment":1,"react/addons":undefined}],4:[function(require,module,exports){
+},{"./DateSelectCalendar":3,"classnames":undefined,"moment":2,"react/addons":undefined}],5:[function(require,module,exports){
 'use strict';
 
 var React = require('react/addons');
@@ -3477,10 +3498,10 @@ module.exports = React.createClass({
 	}
 });
 
-},{"classnames":undefined,"moment":1,"react/addons":undefined}],"react-date-select":[function(require,module,exports){
+},{"classnames":undefined,"moment":2,"react/addons":undefined}],"react-date-select":[function(require,module,exports){
 'use strict';
 
-var _ = require('lodash');
+var blacklist = require('blacklist');
 var moment = require('moment');
 var React = require('react');
 
@@ -3521,11 +3542,11 @@ var DateSelect = React.createClass({
 	},
 	renderDateSelect: function renderDateSelect() {
 		if (!this.state.isOpen) return;
-		var props = _.pick(this.props, ['value', 'isMulti', 'showPredefinedRanges', 'predefinedRangeOptions', 'backdropClosesDateSelect', 'isExpanded', 'isInstant', 'isHeaderless']);
-		props.className = this.props.dialogClassName;
-		props.onCancel = this.closeDateSelect;
-		props.onSelect = this.closeDateSelect;
-		return React.createElement(DateSelectDialog, props);
+		var dialogProps = blacklist(this.props, 'dialogClassName');
+		dialogProps.className = this.props.dialogClassName;
+		dialogProps.onCancel = this.closeDateSelect;
+		dialogProps.onSelect = this.closeDateSelect;
+		return React.createElement(DateSelectDialog, dialogProps);
 	},
 	render: function render() {
 		return React.createElement(
@@ -3543,4 +3564,4 @@ var DateSelect = React.createClass({
 
 module.exports = DateSelect;
 
-},{"./DateSelectDialog":3,"lodash":undefined,"moment":1,"react":undefined}]},{},[]);
+},{"./DateSelectDialog":4,"blacklist":1,"moment":2,"react":undefined}]},{},[]);
