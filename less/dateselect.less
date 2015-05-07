@@ -11,8 +11,8 @@
 // ------------------------------
 
 .DateSelect {
-	font-size: 14px;
-	font-family: sans-serif;
+	font-size: @DateSelect-font-size;
+	font-family: @DateSelect-font-family;
 	
 	* {
 		#DateSelect .box-sizing(border-box);
@@ -36,7 +36,7 @@
 	right: 0;
 	top: 0;
 	width: 100%;
-	z-index: @dateselect-zindex;
+	z-index: @DateSelect-dialog-zindex;
 }
 .DateSelect-dialog-enter {
 	#DateSelect .animation-name( DateSelectDialogEnter );
@@ -52,7 +52,7 @@
 // actual date picker
 
 .DateSelect-content {
-	background-color: @dateselect-bg;
+	background-color: @DateSelect-bg;
 	outline: none; // remove focus outline from opened date picker
 	position: relative;
 }
@@ -68,10 +68,10 @@
 	#DateSelect .clearfix();
 }
 .DateSelect-calendar-legend {
-	padding: @dateselect-padding @dateselect-padding 0;
+	padding: @DateSelect-padding @DateSelect-padding 0;
 }
 .DateSelect-calendar-month {
-	padding: 0 @dateselect-padding @dateselect-padding;
+	padding: 0 @DateSelect-padding @DateSelect-padding;
 }
 .DateSelect-calendar-legend-day,
 .DateSelect-calendar-month-day {
@@ -94,7 +94,7 @@
 // base
 
 .DateSelect-calendar-toolbar {
-	border-bottom: 1px solid @dateselect-footer-border;
+	border-bottom: 1px solid @DateSelect-footer-border;
 	position: relative;
 	text-align: center;
 }
@@ -108,14 +108,14 @@
 	display: inline-block;
 	font-size: inherit;
 	font-weight: 500;
-	line-height: @dateselect-title-button-height;
+	line-height: @DateSelect-title-button-height;
 	padding-left: .5em;
 	padding-right: .5em;
 	-webkit-appearance: none;
 	   -moz-appearance: none;
 
 	&:focus {
-		color: @dateselect-primary;
+		color: @DateSelect-primary;
 		outline: none;
 	}
 }
@@ -129,17 +129,17 @@
 	background-image: none;
 	background-position: center center;
 	background-repeat: no-repeat;
-	background-size: @dateselect-title-button-width @dateselect-title-button-height;
+	background-size: @DateSelect-title-button-width @DateSelect-title-button-height;
 	border: none;
 	display: inline-block;
-	height: @dateselect-title-button-height;
+	height: @DateSelect-title-button-height;
 	opacity: .6;
 	overflow: hidden;
 	position: absolute;
 	text-indent: -9999px;
 	top: 0;
 	white-space: nowrap;
-	width: @dateselect-title-button-width + (@dateselect-padding * 2);
+	width: @DateSelect-title-button-width + (@DateSelect-padding * 2);
 	-webkit-appearance: none;
 	   -moz-appearance: none;
 
@@ -164,7 +164,7 @@
 // ------------------------------
 
 .DateSelect-calendar-legend {
-	color: @dateselect-legend-color;
+	color: @DateSelect-legend-color;
 	font-weight: 500;
 }
 .DateSelect-calendar-legend-day {
@@ -181,33 +181,33 @@
 .DateSelect-calendar-month-day {
 	background: none;
 	border: none;
-	border-radius: @dateselect-border-radius-inner;
+	border-radius: @DateSelect-border-radius-inner;
 	outline: none;
 
 	&:hover {
-		background-color: mix(@dateselect-primary, @dateselect-bg, 10%);
+		background-color: mix(@DateSelect-primary, @DateSelect-bg, 10%);
 	}
 	&:focus {
-		box-shadow: 0 0 0 1px @dateselect-bg, 0 0 0 3px fade(@dateselect-primary, 15%);
-		color: @dateselect-primary;
+		box-shadow: 0 0 0 1px @DateSelect-bg, 0 0 0 3px fade(@DateSelect-primary, 15%);
+		color: @DateSelect-primary;
 		outline: 0;
 	}
 	&:active {
-		background-color: darken(@dateselect-selected-day-bg, 5%);
+		background-color: darken(@DateSelect-selected-day-bg, 5%);
 		box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-		color: @dateselect-selected-day-color;
+		color: @DateSelect-selected-day-color;
 	}
 
 	// current day
 	&.current-day {
-		background-color: @dateselect-current-day-bg;
-		box-shadow: inset 0 0 0 1px @dateselect-current-day-border;
+		background-color: @DateSelect-current-day-bg;
+		box-shadow: inset 0 0 0 1px @DateSelect-current-day-border;
 		
 		&.selected-day {
 			box-shadow: none;
 
 			&:focus {
-				box-shadow: 0 0 0 1px @dateselect-bg, 0 0 0 3px fade(@dateselect-primary, 15%);
+				box-shadow: 0 0 0 1px @DateSelect-bg, 0 0 0 3px fade(@DateSelect-primary, 15%);
 				outline: 0;
 			}
 		}
@@ -215,8 +215,8 @@
 
 	// selected day
 	&.selected-day {
-		background-color: @dateselect-selected-day-bg;
-		color: @dateselect-selected-day-color;
+		background-color: @DateSelect-selected-day-bg;
+		color: @DateSelect-selected-day-color;
 	}
 }
 
@@ -238,22 +238,22 @@
 	}
 }
 .multi-picker .DateSelect-calendar:first-child .DateSelect-calendar-month-day.selected-day::after {
-	border-left: 5px solid @dateselect-primary;
+	border-left: 5px solid @DateSelect-primary;
 	right: -5px;
 }
 .multi-picker .DateSelect-calendar:last-child .DateSelect-calendar-month-day.selected-day::after {
-	border-right: 5px solid @dateselect-primary;
+	border-right: 5px solid @DateSelect-primary;
 	left: -5px;
 }
 .multi-picker .DateSelect-calendar:first-child .after-selected-day {
 	border-radius: 0;
-	background-color: mix(@dateselect-primary, @dateselect-bg, 5%);
-	color: mix(@dateselect-primary, @text-color, 50%);
+	background-color: mix(@DateSelect-primary, @DateSelect-bg, 5%);
+	color: mix(@DateSelect-primary, @DateSelect-text-color, 50%);
 }
 .multi-picker .DateSelect-calendar:last-child .before-selected-day {
 	border-radius: 0;
-	background-color: mix(@dateselect-primary, @dateselect-bg, 5%);
-	color: mix(@dateselect-primary, @text-color, 50%);
+	background-color: mix(@DateSelect-primary, @DateSelect-bg, 5%);
+	color: mix(@DateSelect-primary, @DateSelect-text-color, 50%);
 }
 
 
@@ -275,8 +275,8 @@
 // base
 
 .DateSelect-calendar-header {
-	#DateSelect .gradient-vertical(lighten(@dateselect-header-bg, 4%), darken(@dateselect-header-bg, 4%));
-	background-color: @dateselect-header-bg;
+	#DateSelect .gradient-vertical(lighten(@DateSelect-header-bg, 4%), darken(@DateSelect-header-bg, 4%));
+	background-color: @DateSelect-header-bg;
 	box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 white;
 	color: white;
 	display: block;
@@ -295,8 +295,8 @@
 	}
 	> .DateSelect-calendar-header-dow {
 		background-color: rgba(0, 0, 0, 0.1);
-		border-top-right-radius: @dateselect-border-radius-outer;
-		border-top-left-radius: @dateselect-border-radius-outer;
+		border-top-right-radius: @DateSelect-border-radius-outer;
+		border-top-left-radius: @DateSelect-border-radius-outer;
 		display: block;
 		font-size: .85em;
 		padding: 5px;
@@ -324,7 +324,7 @@
 
 .DateSelect-calendar-header--condensed {
 	letter-spacing: 0.0125em;
-	padding: @dateselect-padding;
+	padding: @DateSelect-padding;
 
 	> .DateSelect-calendar-header,
 	> .DateSelect-calendar-header-dow,
@@ -357,12 +357,12 @@
 // base
 
 .DateSelect-ranges {
-	border-top: 1px solid @dateselect-footer-border;
+	border-top: 1px solid @DateSelect-footer-border;
 	clear: left;
-	color: @dateselect-range-color;
+	color: @DateSelect-range-color;
 	font-size: .85em;
 	position: relative;
-	min-width: @dateselect-ranges-width;
+	min-width: @DateSelect-ranges-width;
 }
 
 
@@ -375,22 +375,22 @@
 	border: none;
 	float: left;
 	outline: none;
-	padding: @dateselect-padding;
+	padding: @DateSelect-padding;
 	position: relative;
 	text-align: left;
 	-webkit-appearance: none;
 	   -moz-appearance: none;
 
 	&:hover {
-		color: @text-color;
+		color: @DateSelect-text-color;
 	}
 	&.active,
 	&:focus {
-		box-shadow: 0 1px 0 @dateselect-range-color;
-		color: @text-color;
+		box-shadow: 0 1px 0 @DateSelect-range-color;
+		color: @DateSelect-text-color;
 
 		&:after {
-			border-bottom: 4px solid @dateselect-range-color;
+			border-bottom: 4px solid @DateSelect-range-color;
 			border-left:   4px solid transparent;
 			border-right:  4px solid transparent;
 			bottom: 0;
@@ -411,8 +411,8 @@
 .DateSelect-ranges-header {
 	float: left;
 	font-weight: 500;
-	padding: @dateselect-padding;
-	padding-left: @dateselect-padding * 2;
+	padding: @DateSelect-padding;
+	padding-left: @DateSelect-padding * 2;
 }
 
 
@@ -430,32 +430,32 @@
 
 .DateSelect-footer {
 	#DateSelect .clearfix();
-	background-color: @dateselect-footer-bg;
-	border-top: 1px solid @dateselect-footer-border;
-	border-bottom-right-radius: @dateselect-border-radius-outer;
-	border-bottom-left-radius: @dateselect-border-radius-outer;
+	background-color: @DateSelect-footer-bg;
+	border-top: 1px solid @DateSelect-footer-border;
+	border-bottom-right-radius: @DateSelect-border-radius-outer;
+	border-bottom-left-radius: @DateSelect-border-radius-outer;
 }
 .DateSelect-footer-button {
 	background-color: transparent;
 	background-image: none;
 	border: none;
 	border-radius: 0;
-	color: @dateselect-footer-color;
+	color: @DateSelect-footer-color;
 	float: left;
 	font-size: inherit;
 	outline: none;
-	padding: @dateselect-padding;
+	padding: @DateSelect-padding;
 	text-align: center;
 	width: 50%;
 	-webkit-appearance: none;
 	   -moz-appearance: none;
 
 	&:last-child {
-		border-left: 1px solid @dateselect-footer-border;
+		border-left: 1px solid @DateSelect-footer-border;
 	}
 
 	&.primary {
-		color: @dateselect-primary;
+		color: @DateSelect-primary;
 		font-weight: 500;
 	}
 }
@@ -478,10 +478,10 @@
 		}
 
 		&:first-child {
-			border-bottom-left-radius: @dateselect-border-radius-outer;
+			border-bottom-left-radius: @DateSelect-border-radius-outer;
 		}
 		&:last-child {
-			border-bottom-right-radius: @dateselect-border-radius-outer;
+			border-bottom-right-radius: @DateSelect-border-radius-outer;
 		}
 	}
 }
@@ -495,7 +495,7 @@
 .multi-picker {
 	// footer
 	.DateSelect-footer {
-		padding: (@dateselect-padding * 1.5) (@dateselect-padding * 2);
+		padding: (@DateSelect-padding * 1.5) (@DateSelect-padding * 2);
 	}
 	.DateSelect-footer-button {
 		background: none;
@@ -523,7 +523,7 @@
 		&:hover,
 		&:focus,
 		&.focus {
-			color: @dateselect-primary;
+			color: @DateSelect-primary;
 			text-decoration: none;
 		}
 
@@ -540,24 +540,24 @@
 		}
 
 		&.primary {
-			#DateSelect .gradient-vertical(lighten(@dateselect-primary, 4%), darken(@dateselect-primary, 4%));
-			background-color: @dateselect-primary;
+			#DateSelect .gradient-vertical(lighten(@DateSelect-primary, 4%), darken(@DateSelect-primary, 4%));
+			background-color: @DateSelect-primary;
 			color: white;
 
 			&:hover,
 			&:focus,
 			&.focus {
-				#DateSelect .gradient-vertical(lighten(@dateselect-primary, 8%), @dateselect-primary);
+				#DateSelect .gradient-vertical(lighten(@DateSelect-primary, 8%), @DateSelect-primary);
 				color: white;
 				outline: none;
 			}
 			&:focus,
 			&.focus {
-				box-shadow: 0 0 0 3px fade(@dateselect-primary, 25%);
+				box-shadow: 0 0 0 3px fade(@DateSelect-primary, 25%);
 			}
 			&:active,
 			&.active {
-				background-color: darken(@dateselect-primary, 5%);
+				background-color: darken(@DateSelect-primary, 5%);
 				background-image: none;
 				box-shadow: none;
 			}
@@ -571,45 +571,45 @@
 // Sizes
 // ------------------------------
 
-@media (min-width: @screen-sm) {
+@media (min-width: @DateSelect-screen-sm-min) {
 	.DateSelect-dialog {
 		margin-bottom: 100px;
 		margin-top: 100px;
-		width: @dateselect-dialog-width;
+		width: @DateSelect-dialog-width;
 	}
 	.DateSelect-content {
-		border-radius: @dateselect-border-radius-outer;
+		border-radius: @DateSelect-border-radius-outer;
 		box-shadow: 0 0 0 1px rgba(0,0,0,.175), 0 3px 8px rgba(0,0,0,.175);
 	}
 	.DateSelect-calendar-header {
-		border-top-right-radius: @dateselect-border-radius-outer;
-		border-top-left-radius: @dateselect-border-radius-outer;
+		border-top-right-radius: @DateSelect-border-radius-outer;
+		border-top-left-radius: @DateSelect-border-radius-outer;
 	}
 	.multi-picker {
 		.DateSelect-body {
 			#DateSelect .clearfix();
 		}
 		.DateSelect-dialog {
-			width: (@dateselect-dialog-width * 2);
+			width: (@DateSelect-dialog-width * 2);
 		}
 		.DateSelect-calendar-header {
 			border-radius: 0;
-			box-shadow: -1px 0 0 darken(@dateselect-header-bg, 10%);
+			box-shadow: -1px 0 0 darken(@DateSelect-header-bg, 10%);
 		}
 		.DateSelect-calendar {
-			border-left: 1px solid @dateselect-footer-border;
+			border-left: 1px solid @DateSelect-footer-border;
 			float: left;
 			width: 50%;
 
 			&:first-child {
 				border-left: none;
 				.DateSelect-calendar-header {
-					border-top-left-radius: @dateselect-border-radius-outer;
+					border-top-left-radius: @DateSelect-border-radius-outer;
 					box-shadow: none;
 				}
 			}
 			&:last-child .DateSelect-calendar-header {
-				border-top-right-radius: @dateselect-border-radius-outer;
+				border-top-right-radius: @DateSelect-border-radius-outer;
 			}
 		}
 	}
@@ -623,13 +623,13 @@
 
 .DateSelect-backdrop {
 	#DateSelect .animation-duration( 140ms );
-	background-color: @dateselect-backdrop-bg;
+	background-color: @DateSelect-backdrop-bg;
 	height: 100%;
 	left: 0;
 	position: fixed;
 	top: 0;
 	width: 100%;
-	z-index: @dateselect-zindex-backdrop;
+	z-index: @DateSelect-backdrop-zindex;
 }
 .DateSelect-background-enter {
 	#DateSelect .animation-name( DateSelectBackdropEnter );

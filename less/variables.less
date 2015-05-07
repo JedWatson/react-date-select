@@ -8,8 +8,24 @@
 // Colours
 // ------------------------------
 
-@text-color:              #333;
-@heading-color:           #222;
+
+@DateSelect-bg:                         #fafafa;
+@DateSelect-primary:                    #1076e5;
+@DateSelect-text-color:                 #333333;
+@DateSelect-backdrop-bg:                rgba(0, 0, 0, 0.5);
+
+@DateSelect-header-bg:                  desaturate(@DateSelect-primary, 10%);
+@DateSelect-footer-bg:                  darken(@DateSelect-bg, 5%);
+@DateSelect-footer-border:              darken(@DateSelect-bg, 15%);
+@DateSelect-footer-color:               #666;
+
+@DateSelect-selected-day-bg:            @DateSelect-primary;
+@DateSelect-selected-day-color:         white;
+@DateSelect-current-day-bg:             darken(@DateSelect-bg, 3%);
+@DateSelect-current-day-border:         darken(@DateSelect-bg, 15%);
+
+@DateSelect-legend-color:               #999;
+@DateSelect-range-color:                #666;
 
 
 
@@ -17,47 +33,21 @@
 // Typography
 // ------------------------------
 
-@dateselect-font-family:  "Helvetica Neue", Helvetica, Arial, sans-serif;
-@dateselect-font-size:    14px;
+@DateSelect-font-family:                "Helvetica Neue", Helvetica, Arial, sans-serif;
+@DateSelect-font-size:                  14px;
 
 
 
 
-
-// Modals
+// Spacing and Sizes
 // ------------------------------
 
-@dateselect-bg:                    white;
-@dateselect-backdrop-bg:           rgba(0, 0, 0, 0.5);
+@DateSelect-padding:                    8px;
+@DateSelect-dialog-width:               280px;
+@DateSelect-ranges-width:               140px;
 
-
-
-
-// Date Picker
-// ------------------------------
-
-@dateselect-primary:             #1076e5;
-
-@dateselect-bg:                  #fafafa;
-@dateselect-header-bg:           desaturate(@dateselect-primary, 20%);
-@dateselect-footer-bg:           darken(@dateselect-bg, 5%);
-@dateselect-footer-border:       darken(@dateselect-bg, 15%);
-@dateselect-footer-color:        #666;
-
-@dateselect-selected-day-bg:     @dateselect-primary;
-@dateselect-selected-day-color:  white;
-@dateselect-current-day-bg:      darken(@dateselect-bg, 3%);
-@dateselect-current-day-border:  darken(@dateselect-bg, 15%);
-
-@dateselect-legend-color:        #999;
-@dateselect-range-color:         #666;
-
-@dateselect-padding:             8px;
-@dateselect-dialog-width:        280px;
-@dateselect-ranges-width:        140px;
-
-@dateselect-title-button-height: 30px;
-@dateselect-title-button-width:  20px;
+@DateSelect-title-button-height:        30px;
+@DateSelect-title-button-width:         20px;
 
 
 
@@ -65,8 +55,8 @@
 // Z-Index List
 // ------------------------------
 
-@dateselect-zindex:                   110;
-@dateselect-zindex-backdrop:          @dateselect-zindex - 1;
+@DateSelect-dialog-zindex:              110;
+@DateSelect-backdrop-zindex:            @DateSelect-dialog-zindex - 1;
 
 
 
@@ -74,8 +64,8 @@
 // Misc
 // ------------------------------
 
-@dateselect-border-radius-outer:         .33em;
-@dateselect-border-radius-inner:           .25em;
+@DateSelect-border-radius-outer:        .33em;
+@DateSelect-border-radius-inner:        .25em;
 
 
 
@@ -83,30 +73,14 @@
 // Media queries breakpoints
 // ------------------------------
 
-// Extra small screen / phone
-@screen-xs:                  480px;
-@screen-xs-min:              @screen-xs;
-@screen-phone:               @screen-xs-min;
+@DateSelect-screen-xs-min:              480px;
+@DateSelect-screen-sm-min:              768px;
+@DateSelect-screen-md-min:              992px;
+@DateSelect-screen-lg-min:              1200px;
 
-// Small screen / tablet
-@screen-sm:                  768px;
-@screen-sm-min:              @screen-sm;
-@screen-tablet:              @screen-sm-min;
-
-// Medium screen / desktop
-@screen-md:                  992px;
-@screen-md-min:              @screen-md;
-@screen-desktop:             @screen-md-min;
-
-// Large screen / wide desktop
-@screen-lg:                  1200px;
-@screen-lg-min:              @screen-lg;
-@screen-lg-desktop:          @screen-lg-min;
-
-// So media queries don't overlap when required, provide a maximum
-@screen-xs-max:              (@screen-sm-min - 1);
-@screen-sm-max:              (@screen-md-min - 1);
-@screen-md-max:              (@screen-lg-min - 1);
+@DateSelect-screen-xs-max:              (@DateSelect-screen-sm-min - 1);
+@DateSelect-screen-sm-max:              (@DateSelect-screen-md-min - 1);
+@DateSelect-screen-md-max:              (@DateSelect-screen-lg-min - 1);
 
 
 
