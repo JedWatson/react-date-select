@@ -42,6 +42,7 @@
     "examples": "gulp dev:server",
     "lint": "eslint ./; true",
     "release": "gulp release",
+    "publish:site": "gulp publish:examples",
     "test": "jest; true",
     "watch": "gulp watch:lib"
   },
