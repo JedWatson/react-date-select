@@ -16,6 +16,7 @@ node_modules
 
 # Publish directory
 .publish
+example/dist
 
 # Other
 .DS_Store
