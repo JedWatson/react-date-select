@@ -43,12 +43,12 @@ var DateSelect = React.createClass({
 		this.setState({ isOpen: false });
 	},
 	renderDateSelect () {
-		if (!this.state.isOpen) return;
+		// if (!this.state.isOpen) return;
 		var dialogProps = blacklist(this.props, 'dialogClassName');
 		dialogProps.className = this.props.dialogClassName;
 		dialogProps.onCancel = this.closeDateSelect;
 		dialogProps.onSelect = this.closeDateSelect;
-		return <DateSelectDialog {...dialogProps} />;
+		return <DateSelectDialog isOpen={this.state.isOpen} {...dialogProps} />;
 	},
 	renderChildren () {
 		return React.Children.map(this.props.children, (child) => {

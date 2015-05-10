@@ -26,6 +26,7 @@ module.exports = React.createClass({
 		};
 	},
 	renderDialog() {
+		if (!this.props.isOpen) return;
 		return (
 			<div className="DateSelect-dialog">
 				<div className="DateSelect-content">
@@ -64,6 +65,7 @@ module.exports = React.createClass({
 		);
 	},
 	renderBackdrop() {
+		if (!this.props.isOpen) return;
 		return (
 			<div className="DateSelect-backdrop" onClick={this.props.backdropClosesDateSelect ? this.props.onCancel : null} />
 		);
@@ -82,7 +84,7 @@ module.exports = React.createClass({
 				<ReactCSSTransitionGroup transitionName="modal-dialog" component="div">
 					{this.renderDialog()}
 				</ReactCSSTransitionGroup>
-				<ReactCSSTransitionGroup transitionName="modal-background" component="div">
+				<ReactCSSTransitionGroup transitionName="modal-backdrop" component="div">
 					{this.renderBackdrop()}
 				</ReactCSSTransitionGroup>
 			</div>
