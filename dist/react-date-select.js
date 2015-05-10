@@ -2,6 +2,8 @@
 (function (global){
 'use strict';
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var blacklist = require('blacklist');
 var moment = (typeof window !== "undefined" ? window.moment : typeof global !== "undefined" ? global.moment : null);
 var React = (typeof window !== "undefined" ? window.React : typeof global !== "undefined" ? global.React : null);
@@ -42,12 +44,12 @@ var DateSelect = React.createClass({
 		this.setState({ isOpen: false });
 	},
 	renderDateSelect: function renderDateSelect() {
-		if (!this.state.isOpen) return;
+		// if (!this.state.isOpen) return;
 		var dialogProps = blacklist(this.props, 'dialogClassName');
 		dialogProps.className = this.props.dialogClassName;
 		dialogProps.onCancel = this.closeDateSelect;
 		dialogProps.onSelect = this.closeDateSelect;
-		return React.createElement(DateSelectDialog, dialogProps);
+		return React.createElement(DateSelectDialog, _extends({ isOpen: this.state.isOpen }, dialogProps));
 	},
 	renderChildren: function renderChildren() {
 		var _this = this;
@@ -257,6 +259,7 @@ module.exports = React.createClass({
 		};
 	},
 	renderDialog: function renderDialog() {
+		if (!this.props.isOpen) return;
 		return React.createElement(
 			'div',
 			{ className: 'DateSelect-dialog' },
@@ -319,6 +322,7 @@ module.exports = React.createClass({
 		);
 	},
 	renderBackdrop: function renderBackdrop() {
+		if (!this.props.isOpen) return;
 		return React.createElement('div', { className: 'DateSelect-backdrop', onClick: this.props.backdropClosesDateSelect ? this.props.onCancel : null });
 	},
 	render: function render() {
@@ -340,7 +344,7 @@ module.exports = React.createClass({
 			),
 			React.createElement(
 				ReactCSSTransitionGroup,
-				{ transitionName: 'modal-background', component: 'div' },
+				{ transitionName: 'modal-backdrop', component: 'div' },
 				this.renderBackdrop()
 			)
 		);
