@@ -2,14 +2,13 @@ var blacklist = require('blacklist');
 var moment = require('moment');
 var React = require('react');
 
-
 var DateSelectDialog = require('./DateSelectDialog');
 
 var DEFAULT_RANGES = [
-	{ value: moment().subtract(1, 'weeks'),   label: 'Past week' },
-	{ value: moment().subtract(1, 'months'),  label: 'Past month' },
-	{ value: moment().subtract(3, 'months'),  label: 'Past 3 months' },
-	{ value: moment().subtract(6, 'months'),  label: 'Past 6 months' },
+	{ value: moment().subtract(1, 'weeks'), label: 'Past week' },
+	{ value: moment().subtract(1, 'months'), label: 'Past month' },
+	{ value: moment().subtract(3, 'months'), label: 'Past 3 months' },
+	{ value: moment().subtract(6, 'months'), label: 'Past 6 months' },
 	{ value: moment().subtract(12, 'months'), label: 'Past 12 months' }
 ];
 

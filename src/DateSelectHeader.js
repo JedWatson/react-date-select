@@ -20,7 +20,6 @@ module.exports = React.createClass({
 		});
 		
 		// elements
-		
 		var header = this.props.expanded ? (<div className={componentClass}>
 				<span className="DateSelect-calendar-header-dow">{date.format('dddd')}</span>
 				<span className="DateSelect-calendar-header-month">{date.format('MMMM')}</span>
