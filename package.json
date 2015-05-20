@@ -28,7 +28,7 @@
     "react": ">=0.12.0"
   },
   "browserify-shim": {
-    "blacklist": "blobal:blacklist",
+    "blacklist": "global:blacklist",
     "classnames": "global:classNames",
     "moment": "global:moment",
     "react": "global:React"
