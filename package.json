@@ -17,10 +17,13 @@
   "devDependencies": {
     "babel-eslint": "^3.1.1",
     "babel-jest": "^5.2.0",
+    "babel": "^5.4.3",
     "eslint": "^0.21.0",
     "eslint-plugin-react": "^2.3.0",
     "gulp": "^3.8.11",
-    "jest-cli": "^0.4.3",
+    "jsdom": "^3.1.2",
+    "mocha": "^2.2.5",
+    "mocha-jsdom": "^0.3.0",
     "react": ">=0.12.0",
     "react-component-gulp-tasks": "^0.7.0"
   },
@@ -43,17 +46,8 @@
     "lint": "eslint ./; true",
     "release": "gulp release",
     "publish:site": "gulp publish:examples",
-    "test": "jest; true",
+    "test": "mocha --compilers js:babel/register",
     "watch": "gulp watch:lib"
-  },
-  "jest": {
-    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
-    "unmockedModulePathPatterns": [
-      "<rootDir>/node_modules/react"
-    ],
-    "testPathDirs": [
-      "<rootDir>/src"
-    ]
   },
   "keywords": [
     "react",
