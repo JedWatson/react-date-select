@@ -35,9 +35,9 @@ module.exports = React.createClass({
 						{this.props.isMulti && <DateSelectCalendar selectedDate={this.state.endDate} isHeaderless={this.props.isHeaderless} />}
 					</div>
 					{this.renderRanges()}
-					{!this.props.isInstant && <div className="DateSelect-footer">
-						<button onClick={this.props.onSelect} className="DateSelect-footer-button primary">Confirm</button>
-						<button onClick={this.props.onCancel} className="DateSelect-footer-button">Cancel</button>
+					{!this.props.isInstant && <div className="DateSelectFooter">
+						<button onClick={this.props.onSelect} className="DateSelectFooter__button DateSelectFooter__button--primary">Confirm</button>
+						<button onClick={this.props.onCancel} className="DateSelectFooter__button DateSelectFooter__button--link">Cancel</button>
 					</div>}
 				</div>
 			</div>
@@ -53,14 +53,11 @@ module.exports = React.createClass({
 					endDate: r.value.format('D')
 				});
 			};
-			return <button key={'range-button' + i} onClick={action} className="DateSelect-range">{r.label}</button>;
+			return <button key={'range-button' + i} onClick={action} className="DateSelect__range__item">{r.label}</button>;
 		});
 		return (
-			<div className="DateSelect-ranges">
-				<div className="DateSelect-ranges-header">Select:</div>
-				<div className="DateSelect-ranges-body">
-					{rangeItems}
-				</div>
+			<div className="DateSelect__range">
+				{rangeItems}
 			</div>
 		);
 	},

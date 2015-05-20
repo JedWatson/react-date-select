@@ -73,18 +73,18 @@
 // Days - Common
 // ------------------------------
 
-.DateSelect-calendar-legend,
-.DateSelect-calendar-month {
+.DateSelectCalendar__legend,
+.DateSelectCalendar__month {
 	#DateSelect .clearfix();
 }
-.DateSelect-calendar-legend {
+.DateSelectCalendar__legend {
 	padding: @DateSelect-padding @DateSelect-padding 0;
 }
-.DateSelect-calendar-month {
+.DateSelectCalendar__month {
 	padding: 0 @DateSelect-padding @DateSelect-padding;
 }
-.DateSelect-calendar-legend-day,
-.DateSelect-calendar-month-day {
+.DateSelectCalendar__legend__day,
+.DateSelectCalendar__month__day {
 	float: left;
 	font-size: inherit;
 	line-height: 1;
@@ -103,7 +103,7 @@
 
 // base
 
-.DateSelect-calendar-toolbar {
+.DateSelectCalendar__toolbar {
 	border-bottom: 1px solid @DateSelect-footer-border;
 	position: relative;
 	text-align: center;
@@ -112,7 +112,7 @@
 
 // selects
 
-.DateSelect-calendar-toolbar-select {
+.DateSelectCalendar__toolbar__select {
 	background: none;
 	border: none;
 	display: inline-block;
@@ -131,8 +131,7 @@
 
 // buttons
 
-.DateSelect-calendar-toolbar-button-prev,
-.DateSelect-calendar-toolbar-button-next {
+.DateSelectCalendar__toolbar__button {
 	background-color: transparent;
 	background-image: none;
 	background-position: center center;
@@ -154,11 +153,11 @@
 	}
 }
 
-.DateSelect-calendar-toolbar-button-prev {
+.DateSelectCalendar__toolbar__button--prev {
 	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAA8CAYAAAAUufjgAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDE0IDc5LjE1Njc5NywgMjAxNC8wOC8yMC0wOTo1MzowMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RjBBQkU4NjZENUM5MTFFNEI1MkFDNEUxMUIxMzU3NDEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RjBBQkU4NjdENUM5MTFFNEI1MkFDNEUxMUIxMzU3NDEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGMEFCRTg2NEQ1QzkxMUU0QjUyQUM0RTExQjEzNTc0MSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpGMEFCRTg2NUQ1QzkxMUU0QjUyQUM0RTExQjEzNTc0MSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pp2znPUAAAD9SURBVHja7JnBCQIxEEUzkgZsQkuwAW3GfrQRj+rdFkwRNuAhTiCBIARNMnFH9g989rLsPObzk+wuee+N5loY5QVAAAIQgAAEIAABCMB5A9qam4mouVHryX32FgeHDl1PCKP/VpW1ZJ1Di9o+ueygya1Yp3hVZ/GWdZOAG2HxnvWMtuZqtlgKMIXBFzQpYB4GcUCrJQwjQiIbBuGQlMIgbnHrBMn8qjpCsmM9Rk+wN8VrltNocao7a8O6arT4faE+al2o/2Kr+xQeVYBph3EaQlIqF8Nz0XbcKh75WydINY3xVtf7XjzFXyl8+gAgAAEIQAACEIAABKDqegkwAHr84FvNdKczAAAAAElFTkSuQmCC");
 	left: 0;
 }
-.DateSelect-calendar-toolbar-button-next {
+.DateSelectCalendar__toolbar__button--next {
 	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAA8CAYAAAAUufjgAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDE0IDc5LjE1Njc5NywgMjAxNC8wOC8yMC0wOTo1MzowMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6M0UyMTVBRTNENUNBMTFFNEI1MkFDNEUxMUIxMzU3NDEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6M0UyMTVBRTRENUNBMTFFNEI1MkFDNEUxMUIxMzU3NDEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGMEFCRTg2OEQ1QzkxMUU0QjUyQUM0RTExQjEzNTc0MSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozRTIxNUFFMkQ1Q0ExMUU0QjUyQUM0RTExQjEzNTc0MSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgHkmaEAAAEASURBVHja7JnRDYIwEIapYQGHkBVcAN90EfeRZdR3VhB3YAEf6jWpiRDBpj3gT/gv+R9Lv9z1b6/UWGsz5Nhk4EFAAhKQgAQkIAEJSMB1A+Ypg40x0WNDO/lVlLhKrcTfVMfq8wnRVbSdYl4tQKdGVGgDaq7BnagWHRBL/K2X6IxY4r4uY+ZBABw1Dwqg0+OXeZYwyVAU3jwlikmG1DEPUgY7xzdqBtv+/hg6Rz5D1p6ikzcLXD94F+1j4aYucYW6UUMfdW1os7CESZwZjr7tgrs03bwZGnWbKZQ4quUPncOkvJPwVpd6G5vjlYq/PghIQAISkIAEJCABCQgdbwEGAOhL4l/o/UvgAAAAAElFTkSuQmCC");
 	right: 0;
 }
@@ -169,11 +168,11 @@
 // Legend
 // ------------------------------
 
-.DateSelect-calendar-legend {
+.DateSelectCalendar__legend {
 	color: @DateSelect-legend-color;
 	font-weight: 500;
 }
-.DateSelect-calendar-legend-day {
+.DateSelectCalendar__legend__day {
 	border-bottom: none;
 	cursor: default;
 }
@@ -184,7 +183,7 @@
 // Calendar
 // ------------------------------
 
-.DateSelect-calendar-month-day {
+.DateSelectCalendar__month__day {
 	background: none;
 	border: none;
 	border-radius: @DateSelect-border-radius-inner;
@@ -205,11 +204,11 @@
 	}
 
 	// current day
-	&.current-day {
+	&.is-current-day {
 		background-color: @DateSelect-current-day-bg;
 		box-shadow: inset 0 0 0 1px @DateSelect-current-day-border;
 		
-		&.selected-day {
+		&.is-selected {
 			box-shadow: none;
 
 			&:focus {
@@ -220,7 +219,7 @@
 	}
 
 	// selected day
-	&.selected-day {
+	&.is-selected {
 		background-color: @DateSelect-selected-day-bg;
 		color: @DateSelect-selected-day-color;
 	}
@@ -228,8 +227,8 @@
 
 // add an arrow on multi pickers
 
-.multi-picker .DateSelect-calendar:first-child .DateSelect-calendar-month-day.selected-day,
-.multi-picker .DateSelect-calendar:last-child .DateSelect-calendar-month-day.selected-day {
+.multi-picker .DateSelectCalendar:first-child .DateSelectCalendar__month__day.is-selected,
+.multi-picker .DateSelectCalendar:last-child .DateSelectCalendar__month__day.is-selected {
 	
 	&::after {
 		border-bottom:  5px solid transparent;
@@ -243,20 +242,20 @@
 		z-index: 1;
 	}
 }
-.multi-picker .DateSelect-calendar:first-child .DateSelect-calendar-month-day.selected-day::after {
+.multi-picker .DateSelectCalendar:first-child .DateSelectCalendar__month__day.is-selected::after {
 	border-left: 5px solid @DateSelect-primary;
 	right: -5px;
 }
-.multi-picker .DateSelect-calendar:last-child .DateSelect-calendar-month-day.selected-day::after {
+.multi-picker .DateSelectCalendar:last-child .DateSelectCalendar__month__day.is-selected::after {
 	border-right: 5px solid @DateSelect-primary;
 	left: -5px;
 }
-.multi-picker .DateSelect-calendar:first-child .after-selected-day {
+.multi-picker .DateSelectCalendar:first-child .is-after-selected-day {
 	border-radius: 0;
 	background-color: mix(@DateSelect-primary, @DateSelect-bg, 5%);
 	color: mix(@DateSelect-primary, @DateSelect-text-color, 50%);
 }
-.multi-picker .DateSelect-calendar:last-child .before-selected-day {
+.multi-picker .DateSelectCalendar:last-child .is-before-selected-day {
 	border-radius: 0;
 	background-color: mix(@DateSelect-primary, @DateSelect-bg, 5%);
 	color: mix(@DateSelect-primary, @DateSelect-text-color, 50%);
@@ -280,7 +279,7 @@
 
 // base
 
-.DateSelect-calendar-header {
+.DateSelectHeader {
 	#DateSelect .gradient-vertical(lighten(@DateSelect-header-bg, 4%), darken(@DateSelect-header-bg, 4%));
 	background-color: @DateSelect-header-bg;
 	box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 white;
@@ -292,14 +291,14 @@
 
 // expanded
 
-.DateSelect-calendar-header--expanded {
+.DateSelectHeader--expanded {
 	line-height: 1;
 
-	> .DateSelect-calendar-header {
+	> .DateSelectHeader {
 		display: block;
 		font-weight: 300;
 	}
-	> .DateSelect-calendar-header-dow {
+	> .DateSelectHeader__dow {
 		background-color: rgba(0, 0, 0, 0.1);
 		border-top-right-radius: @DateSelect-border-radius-outer;
 		border-top-left-radius: @DateSelect-border-radius-outer;
@@ -307,18 +306,18 @@
 		font-size: .85em;
 		padding: 5px;
 	}
-	> .DateSelect-calendar-header-month {
+	> .DateSelectHeader__month {
 		display: block;
 		padding-top: 10px;
 		text-transform: uppercase;
 	}
-	> .DateSelect-calendar-header-day {
+	> .DateSelectHeader__day {
 		display: block;
 		font-size: 4em;
 		margin-bottom: 5px;
 		margin-top: 5px;
 	}
-	> .DateSelect-calendar-header-year {
+	> .DateSelectHeader__year {
 		color: rgba(255, 255, 255, 0.75);
 		display: block;
 		padding-bottom: 10px;
@@ -328,22 +327,22 @@
 
 // condensed
 
-.DateSelect-calendar-header--condensed {
+.DateSelectHeader--condensed {
 	font-weight: bold;
 	letter-spacing: 0.0125em;
 	padding: @DateSelect-padding;
 
-	> .DateSelect-calendar-header,
-	> .DateSelect-calendar-header-dow,
-	> .DateSelect-calendar-header-month,
-	> .DateSelect-calendar-header-day,
-	> .DateSelect-calendar-header-year {
+	> .DateSelectHeader,
+	> .DateSelectHeader__dow,
+	> .DateSelectHeader__month,
+	> .DateSelectHeader__day,
+	> .DateSelectHeader__year {
 		display: inline-block;
 		margin-left: .15em;
 		margin-right: .15em;
 	}
 
-	> .DateSelect-calendar-header-dow {
+	> .DateSelectHeader__dow {
 		opacity: .75;
 		display: block;
 		font-size: .75em;
@@ -363,23 +362,23 @@
 
 // base
 
-.DateSelect-ranges {
+.DateSelect__range {
 	border-top: 1px solid @DateSelect-footer-border;
 	display: table;
 	font-size: .85em;
 	position: relative;
-	min-width: @DateSelect-ranges-width;
 	width: 100%;
+
+	// dim on hover
+	&:hover {
+		color: lighten(@DateSelect-text-color, 20%);
+	}
 }
 
 
 // items
 
-.DateSelect-range-body {
-	color: @DateSelect-text-color;
-	display: table-cell;
-}
-.DateSelect-range {
+.DateSelect__range__item {
 	#DateSelect .transition( color 200ms );
 	background-color: transparent;
 	background-image: none;
@@ -416,36 +415,19 @@
 }
 
 
-// header
-
-.DateSelect-ranges-header {
-	color: @DateSelect-text-color;
-	display: table-cell;
-	padding: @DateSelect-padding;
-	padding-left: @DateSelect-padding * 2;
-}
-
-
-// body
-
-.DateSelect-ranges-body:hover {
-	color: lighten(@DateSelect-text-color, 20%);
-}
-
-
 
 
 // Footer
 // ------------------------------
 
-.DateSelect-footer {
+.DateSelectFooter {
 	#DateSelect .clearfix();
 	background-color: @DateSelect-footer-bg;
 	border-top: 1px solid @DateSelect-footer-border;
 	border-bottom-right-radius: @DateSelect-border-radius-outer;
 	border-bottom-left-radius: @DateSelect-border-radius-outer;
 }
-.DateSelect-footer-button {
+.DateSelectFooter__button {
 	background-color: transparent;
 	background-image: none;
 	border: none;
@@ -461,11 +443,10 @@
 	&:last-child {
 		border-left: 1px solid @DateSelect-footer-border;
 	}
-
-	&.primary {
-		color: @DateSelect-primary;
-		font-weight: 500;
-	}
+}
+.DateSelectFooter__button--primary {
+	color: @DateSelect-primary;
+	font-weight: 500;
 }
 
 
@@ -475,7 +456,7 @@
 // ------------------------------
 
 .single-picker {
-	.DateSelect-footer-button {
+	.DateSelectFooter__button {
 		&:hover,
 		&:focus {
 			background-color: rgba(255, 255, 255, 0.66);
@@ -502,10 +483,10 @@
 
 .multi-picker {
 	// footer
-	.DateSelect-footer {
+	.DateSelectFooter {
 		padding: (@DateSelect-padding * 1.5) (@DateSelect-padding * 2);
 	}
-	.DateSelect-footer-button {
+	.DateSelectFooter__button {
 		background: none;
 		border-radius: .25em;
 		border: 0;
@@ -545,29 +526,28 @@
 			opacity: .4;
 			pointer-events: none;
 		}
+	}
+	.DateSelectFooter__button--primary {
+		#DateSelect .gradient-vertical(lighten(@DateSelect-primary, 4%), darken(@DateSelect-primary, 4%));
+		background-color: @DateSelect-primary;
+		color: white;
 
-		&.primary {
-			#DateSelect .gradient-vertical(lighten(@DateSelect-primary, 4%), darken(@DateSelect-primary, 4%));
-			background-color: @DateSelect-primary;
+		&:hover,
+		&:focus,
+		&.focus {
+			#DateSelect .gradient-vertical(lighten(@DateSelect-primary, 8%), @DateSelect-primary);
 			color: white;
-
-			&:hover,
-			&:focus,
-			&.focus {
-				#DateSelect .gradient-vertical(lighten(@DateSelect-primary, 8%), @DateSelect-primary);
-				color: white;
-				outline: none;
-			}
-			&:focus,
-			&.focus {
-				box-shadow: 0 0 0 3px fade(@DateSelect-primary, 25%);
-			}
-			&:active,
-			&.active {
-				background-color: darken(@DateSelect-primary, 5%);
-				background-image: none;
-				box-shadow: none;
-			}
+			outline: none;
+		}
+		&:focus,
+		&.focus {
+			box-shadow: 0 0 0 3px fade(@DateSelect-primary, 25%);
+		}
+		&:active,
+		&.active {
+			background-color: darken(@DateSelect-primary, 5%);
+			background-image: none;
+			box-shadow: none;
 		}
 	}
 }
@@ -588,7 +568,7 @@
 		border-radius: @DateSelect-border-radius-outer;
 		box-shadow: 0 0 0 1px rgba(0,0,0,.175), 0 3px 8px rgba(0,0,0,.175);
 	}
-	.DateSelect-calendar-header {
+	.DateSelectHeader {
 		border-top-right-radius: @DateSelect-border-radius-outer;
 		border-top-left-radius: @DateSelect-border-radius-outer;
 	}
@@ -599,23 +579,23 @@
 		.DateSelect-dialog {
 			width: (@DateSelect-dialog-width * 2);
 		}
-		.DateSelect-calendar-header {
+		.DateSelectHeader {
 			border-radius: 0;
 			box-shadow: -1px 0 0 darken(@DateSelect-header-bg, 10%);
 		}
-		.DateSelect-calendar {
+		.DateSelectCalendar {
 			border-left: 1px solid @DateSelect-footer-border;
 			float: left;
 			width: 50%;
 
 			&:first-child {
 				border-left: none;
-				.DateSelect-calendar-header {
+				.DateSelectHeader {
 					border-top-left-radius: @DateSelect-border-radius-outer;
 					box-shadow: none;
 				}
 			}
-			&:last-child .DateSelect-calendar-header {
+			&:last-child .DateSelectHeader {
 				border-top-right-radius: @DateSelect-border-radius-outer;
 			}
 		}
