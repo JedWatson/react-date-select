@@ -5,7 +5,7 @@ var classNames = require('classnames');
 var DateSelectHeader = require('./DateSelectHeader');
 
 module.exports = React.createClass({
-	displayName: 'DateSelectHeader',
+	displayName: 'DateSelectCalendar',
 	propTypes: {
 		isExpanded: React.PropTypes.bool,
 		isHeaderless: React.PropTypes.bool,
