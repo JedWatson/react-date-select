@@ -5,7 +5,6 @@ var classNames = require('classnames');
 var DateSelectHeader = require('./DateSelectHeader');
 
 module.exports = React.createClass({
-	displayName: 'DateSelectHeader',
 	propTypes: {
 		isExpanded: React.PropTypes.bool,
 		isHeaderless: React.PropTypes.bool,
@@ -36,65 +35,52 @@ module.exports = React.createClass({
 
 	render() {
 		var self = this;
-		var firstDayOfMonth = moment().startOf('month').format('D');
-		var lastDayOfMonth  = moment().endOf('month').format('D');
-		var currentDayOfMonth  = moment().format('D');
-
-		var calendarClass = classNames('DateSelectCalendar', {
-			'DateSelectCalendar--start': this.props.startDate,
-			'DateSelectCalendar--end': this.props.endDate
-		});
-
 
 		// variables
-		var currentMonth = moment().format('MMMM');
-		var currentYear = moment().format('YYYY');
-		var years = [];
-		var months = ['January','February','March','April','June','July','August','September','October','November','December'];
-		var daysOfTheMonth = [];
-		var daysOfTheWeek = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
-		for(var  i = firstDayOfMonth; i < lastDayOfMonth; i++) {
-			daysOfTheMonth.push(i);
-		}
-		for (var i = this.props.yearRange[0]; i < this.props.yearRange[1]; i++) {
-			years.push(i);
-		}
+		var selectedMonth = 'Bay';
+		var selectedYear = '2004';
 
-		
-		// elements
-		
-		var weekDays = daysOfTheWeek.map(function(day, i) {
-			return <abbr key={'day' + i} className="DateSelectCalendar__legend__day" title={day}>{day.slice(0,1)}</abbr>
-		});
-		var monthDays = daysOfTheMonth.map(function(day) {
+		var years = ['2003', '2004'];
+		var months = ['April', 'Bay'].map(function(x) { return { name: x.slice(0, 3), value: x } });
+		var daysOfTheMonth = [10, 28, 29, 30, 31, 1,2,3,4,5,6,7,8,9,10,15].map(function(x, i) { return { num: x, disabled: x > 25 && i < 10 } })
+		var dayNames = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'].map(function(x) { return { name: x, abbr: x.slice(0, 1) } })
+
+
+
+    ////////// RENDERING
+    var renderLegend = dayNames.map(function(day, i) {
+			return <abbr className="DateSelectCalendar__legend__day" key={'day-abbr-' + i} title={day.name}>{day.abbr}</abbr>
+    })
+
+		var renderDays = daysOfTheMonth.map(function(day, i) {
+      function handleOnSelect() {
+        self.handleDaySelection(day)
+      }
+
 			var dayClass = classNames('DateSelectCalendar__month__day', {
-				'is-current-day': day == currentDayOfMonth,
-				'is-selected': day == self.state.selectedDate,
-				'is-before-selected-day': self.state.selectedDate && (day < self.state.selectedDate),
-				'is-after-selected-day': self.state.selectedDate && (day > self.state.selectedDate)
+				'is-current-day': i === 1,
+				'is-selected': i === 5 || i === 11,
+        'is-selected-open': i === 5,
+        'is-selected-closed': i === 11,
+				'is-range-selected': i > 5 && i < 11,
+        'DateSelectCalendar__legend': day.disabled
 			})
-			return <button key={'day' + day} onClick={self.handleDaySelection.bind(self, day)} className={dayClass}>{day}</button>
-		});
-		
-		var titleMonths = months.map(function(month, i) {
-			return <option key={'month' + i} value={month}>{month.slice(0,3)}</option>
-		});
-		var titleYears = years.map(function(year, i) {
-			return <option key={'year' + i} value={year}>{year}</option>
+
+			return <button key={'day-' + i} onClick={handleOnSelect} className={dayClass}>{day}</button>
 		});
 
-		var calendar = <div className={calendarClass}>
-			{!this.props.isHeaderless && <DateSelectHeader selectedDate={this.state.selectedDate} isExpanded={this.props.isExpanded} />}
+		var monthOptions = months.map(function(month, i) { return <option key={'month-' + i} value={month.value}>{month.name}</option> });
+		var yearOptions = years.map(function(year, i) { return <option key={'year-' + i} value={year}>{year}</option> });
+
+		return <div className='DateSelectCalendar'>
 			<div className="DateSelectCalendar__toolbar">
 				<button className="DateSelectCalendar__toolbar__button DateSelectCalendar__toolbar__button--prev">Previous Month</button>
-				<select className="DateSelectCalendar__toolbar__select" defaultValue={currentMonth}>{titleMonths}</select>
-				<select className="DateSelectCalendar__toolbar__select" defaultValue={currentYear}>{titleYears}</select>
+				<select className="DateSelectCalendar__toolbar__select" value={selectedMonth}>{monthOptions}</select>
+				<select className="DateSelectCalendar__toolbar__select" value={selectedYear}>{yearOptions}</select>
 				<button className="DateSelectCalendar__toolbar__button DateSelectCalendar__toolbar__button--next">Next Month</button>
 			</div>
-			<div className="DateSelectCalendar__legend">{weekDays}</div>
-			<div className="DateSelectCalendar__month">{monthDays}</div>
+			<div className="DateSelectCalendar__legend">{renderLegend}</div>
+			<div className="DateSelectCalendar__month">{renderDays}</div>
 		</div>
-		
-		return calendar;
 	}
 });
