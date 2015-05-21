@@ -42,27 +42,47 @@ module.exports = React.createClass({
 
 		var years = ['2003', '2004'];
 		var months = ['April', 'Bay'].map(function(x) { return { name: x.slice(0, 3), value: x } });
-		var daysOfTheMonth = [10, 28, 29, 30, 31, 1,2,3,4,5,6,7,8,9,10,15].map(function(x, i) { return { num: x, disabled: x > 25 && i < 10 } })
-		var dayNames = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'].map(function(x) { return { name: x, abbr: x.slice(0, 1) } })
-
-
+		var days = [10, 28, 29, 30, 31, 1,2,3,4,5,6,7,8,9,10,15].map(function(x) { return {
+      name: x,
+      highlighted: false,
+      selected: x >= 29 && x <= 31,
+      disabled: x == 28,
+    }})
+		var dayNames = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'].map(function(x) { return { name: x.slice(0, 1), title: x } })
 
     ////////// RENDERING
     var renderLegend = dayNames.map(function(day, i) {
 			return <abbr className="DateSelectCalendar__legend__day" key={'day-abbr-' + i} title={day.name}>{day.abbr}</abbr>
     })
 
-		var renderDays = daysOfTheMonth.map(function(day, i) {
+		var renderDays = days.map(function(day, i) {
       function handleOnSelect() {
         self.handleDaySelection(day)
       }
 
-			var dayClass = classNames('DateSelectCalendar__month__day', {
-				'is-current-day': i === 1,
-				'is-selected': i === 5 || i === 11,
-        'is-selected-open': i === 5,
-        'is-selected-closed': i === 11,
-				'is-range-selected': i > 5 && i < 11,
+      var selected = day.selected
+      var dayBefore = days[i - 1] || {}
+      var dayAfter = days[i + 1] || {}
+
+			var selectClass
+
+      if (selected) {
+        if (dayBefore.selected && dayAfter.selected) {
+          selectClass = 'is-range-selected'
+
+        } else if (dayBefore.selected) {
+          selectClass = 'is-selected is-selected-closed'
+
+        } else if (dayAfter.selected) {
+          selectClass = 'is-selected is-selected-open'
+
+        } else {
+          selectClass = 'is-selected'
+        }
+      }
+
+      var dayClass = classNames('DateSelectCalendar__month__day', selectClass, {
+				'is-highlighted': day.highlighted,
         'DateSelectCalendar__legend': day.disabled
 			})
 
