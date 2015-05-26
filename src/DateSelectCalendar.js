@@ -42,10 +42,11 @@ module.exports = React.createClass({
 
 		var years = ['2003', '2004'];
 		var months = ['April', 'Bay'].map(function(x) { return { name: x.slice(0, 3), value: x } });
-		var days = [10, 28, 29, 30, 31, 1,2,3,4,5,6,7,8,9,10,15].map(function(x) { return {
+		var days = [10, 28, 29, 30, 31, 1,2,3,4,5,6,7,8,9,10,15].map(function(x, i) { return {
       name: x,
       highlighted: false,
-      selected: x >= 29 && x <= 31,
+      continues: i === 0 || i === 15,
+      selected: (i >= 0 && i <= 5) || i >= 14,
       disabled: x == 28,
     }})
 		var dayNames = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'].map(function(x) { return { name: x.slice(0, 1), title: x } })
@@ -61,8 +62,8 @@ module.exports = React.createClass({
       }
 
       var selected = day.selected
-      var dayBefore = days[i - 1] || {}
-      var dayAfter = days[i + 1] || {}
+      var dayBefore = days[i - 1] || { selected: day.continues }
+      var dayAfter = days[i + 1] || { selected: day.continues }
 
 			var selectClass
 
