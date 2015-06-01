@@ -17,7 +17,7 @@ describe('DateSelect test', function() {
     );
 
 	it('should be rendered', function() {
-		expect(true).toEqual(true);
+		expect(instance).toBeDefined();
 	});
 
 });
