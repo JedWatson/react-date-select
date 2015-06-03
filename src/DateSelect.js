@@ -51,8 +51,7 @@ var DateSelect = React.createClass({
 	},
 	renderChildren () {
 		return React.Children.map(this.props.children, (child) => {
-			child.props.onClick = this.openDateSelect;
-			return child;
+			return React.cloneElement(child, { onClick: this.openDateSelect });
 		});
 	},
 	renderButton () {
