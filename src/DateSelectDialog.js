@@ -26,7 +26,7 @@ module.exports = React.createClass({
 		};
 	},
 	renderDialog() {
-		if (!this.props.isOpen) return;
+		if (!this.props.isOpen) return null;
 		return (
 			<div className="DateSelect-dialog">
 				<div className="DateSelect-content">
@@ -44,15 +44,15 @@ module.exports = React.createClass({
 		);
 	},
 	renderRanges() {
-		if (!this.props.showPredefinedRanges) return;
+		if (!this.props.showPredefinedRanges) return null;
 		var self = this;
-		var rangeItems = this.props.predefinedRangeOptions.map(function(r,i) {
+		var rangeItems = this.props.predefinedRangeOptions.map(function(r, i) {
 			function action() {
 				self.setState({
 					startDate: moment().format('D'),
 					endDate: r.value.format('D')
 				});
-			};
+			}
 			return <button key={'range-button' + i} onClick={action} className="DateSelect__range__item">{r.label}</button>;
 		});
 		return (
@@ -62,7 +62,7 @@ module.exports = React.createClass({
 		);
 	},
 	renderBackdrop() {
-		if (!this.props.isOpen) return;
+		if (!this.props.isOpen) return null;
 		return (
 			<div className="DateSelect-backdrop" onClick={this.props.backdropClosesDateSelect ? this.props.onCancel : null} />
 		);
