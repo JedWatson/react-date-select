@@ -15,9 +15,7 @@
 @DateSelect-backdrop-bg:                rgba(0, 0, 0, 0.5);
 
 @DateSelect-header-bg:                  desaturate(@DateSelect-primary, 10%);
-@DateSelect-footer-bg:                  darken(@DateSelect-bg, 5%);
-@DateSelect-footer-border:              darken(@DateSelect-bg, 15%);
-@DateSelect-footer-color:               #666;
+@DateSelect-header-color:               white;
 
 @DateSelect-selected-day-bg:            @DateSelect-primary;
 @DateSelect-selected-day-color:         white;
@@ -47,6 +45,36 @@
 
 @DateSelect-title-button-height:        30px;
 @DateSelect-title-button-width:         20px;
+
+
+
+
+// Footer / Buttons
+// ------------------------------
+
+
+// common
+
+@DateSelect-footer-bg:                  darken(@DateSelect-bg, 5%);
+@DateSelect-footer-border:              darken(@DateSelect-bg, 15%);
+@DateSelect-footer-color:               #666;
+@DateSelect-footer-button-font-weight:  normal;
+@DateSelect-footer-button-font-weight-primary: 500;
+
+
+// single picker
+
+@DateSelect-footer-single-button-primary-color:   @DateSelect-primary;
+@DateSelect-footer-single-button-hover-bg:   rgba(255, 255, 255, 0.66);
+@DateSelect-footer-single-button-active-bg:  rgba(0, 0, 0, 0.05);
+
+
+// multi picker
+
+@DateSelect-footer-multi-button-primary-bg:     @DateSelect-primary;
+@DateSelect-footer-multi-button-primary-color:  white;
+@DateSelect-footer-multi-button-color:          @DateSelect-footer-color;
+@DateSelect-footer-multi-button-hover-color:    @DateSelect-primary;
 
 
 
