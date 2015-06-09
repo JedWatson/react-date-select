@@ -30,6 +30,15 @@ module.exports = React.createClass({
 			endDate: ''
 		};
 	},
+	renderFooter() {
+		if (!this.props.confirmationIsRequired) return null;
+		return (
+			<div className="DateSelectFooter">
+				<button onClick={this.props.onSelect} className="DateSelectFooter__button DateSelectFooter__button--primary">Confirm</button>
+				<button onClick={this.props.onCancel} className="DateSelectFooter__button DateSelectFooter__button--link">Cancel</button>
+			</div>
+		);
+	},
 	renderDialog() {
 		if (!this.props.isOpen) return null;
 		return (
@@ -40,10 +49,7 @@ module.exports = React.createClass({
 						{this.props.isMulti && <DateSelectCalendar selectedDate={this.state.endDate} isHeaderless={this.props.isHeaderless} />}
 					</div>
 					{this.renderRanges()}
-					{this.props.confirmationIsRequired && <div className="DateSelectFooter">
-						<button onClick={this.props.onSelect} className="DateSelectFooter__button DateSelectFooter__button--primary">Confirm</button>
-						<button onClick={this.props.onCancel} className="DateSelectFooter__button DateSelectFooter__button--link">Cancel</button>
-					</div>}
+					{this.renderFooter()}
 				</div>
 			</div>
 		);
