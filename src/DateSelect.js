@@ -18,7 +18,7 @@ var DateSelect = React.createClass({
 		dialogClassName: React.PropTypes.string,
 		isExpanded: React.PropTypes.bool,
 		isHeaderless: React.PropTypes.bool,
-		isInstant: React.PropTypes.bool,
+		confirmationIsRequired: React.PropTypes.bool,
 		isMulti: React.PropTypes.bool,
 		predefinedRangeOptions: React.PropTypes.array,
 		showPredefinedRanges: React.PropTypes.bool,

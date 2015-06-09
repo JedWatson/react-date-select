@@ -9,7 +9,7 @@ module.exports = React.createClass({
 	propTypes: {
 		isExpanded: React.PropTypes.bool,
 		isHeaderless: React.PropTypes.bool,
-		isInstant: React.PropTypes.bool,
+		confirmationIsRequired: React.PropTypes.bool,
 		selectedDate: React.PropTypes.string,
 		weekStartsOn: React.PropTypes.string,
 		yearRange: React.PropTypes.arrayOf(React.PropTypes.number)

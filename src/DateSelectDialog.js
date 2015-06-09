@@ -12,12 +12,17 @@ module.exports = React.createClass({
 		className: React.PropTypes.string,
 		isExpanded: React.PropTypes.bool,
 		isHeaderless: React.PropTypes.bool,
-		isInstant: React.PropTypes.bool,
+		confirmationIsRequired: React.PropTypes.bool,
 		isMulti: React.PropTypes.bool,
 		onCancel: React.PropTypes.func,
 		onSelect: React.PropTypes.func,
 		predefinedRangeOptions: React.PropTypes.array,
 		showPredefinedRanges: React.PropTypes.bool
+	},
+	getDefaultProps() {
+		return {
+			confirmationIsRequired: true
+		};
 	},
 	getInitialState() {
 		return {
@@ -31,11 +36,11 @@ module.exports = React.createClass({
 			<div className="DateSelect-dialog">
 				<div className="DateSelect-content">
 					<div className="DateSelect-body">
-						<DateSelectCalendar selectedDate={this.state.startDate} isHeaderless={this.props.isHeaderless} isInstant={this.props.isInstant} />
+						<DateSelectCalendar selectedDate={this.state.startDate} isHeaderless={this.props.isHeaderless} confirmationIsRequired={this.props.confirmationIsRequired} />
 						{this.props.isMulti && <DateSelectCalendar selectedDate={this.state.endDate} isHeaderless={this.props.isHeaderless} />}
 					</div>
 					{this.renderRanges()}
-					{!this.props.isInstant && <div className="DateSelectFooter">
+					{this.props.confirmationIsRequired && <div className="DateSelectFooter">
 						<button onClick={this.props.onSelect} className="DateSelectFooter__button DateSelectFooter__button--primary">Confirm</button>
 						<button onClick={this.props.onCancel} className="DateSelectFooter__button DateSelectFooter__button--link">Cancel</button>
 					</div>}
