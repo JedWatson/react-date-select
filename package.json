@@ -15,10 +15,7 @@
     "moment": "~2.10.3"
   },
   "devDependencies": {
-    "babel-eslint": "^3.1.1",
     "babel": "^5.4.3",
-    "eslint": "^0.21.0",
-    "eslint-plugin-react": "^2.3.0",
     "gulp": "^3.8.11",
     "jsdom": "^3.1.2",
     "mocha": "^2.2.5",
