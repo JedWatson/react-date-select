@@ -6,8 +6,8 @@ module.exports = React.createClass({
 		return {
 			dayNames: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map(x => (
 				{
-					name: x.slice(0, 1),
-					title: x
+					abbr: x.slice(0, 1),
+					name: x
 				}
 			)),
 			days: [30, 1, 2, 3].map(x => x.toString()),
