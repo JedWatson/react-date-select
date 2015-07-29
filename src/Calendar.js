@@ -4,14 +4,6 @@ var classnames = require('classnames')
 module.exports = React.createClass({
 	getDefaultProps () {
 		return {
-// 			days: [10, 28, 29, 30, 31, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15].map((x, i) => {
-// 				return {
-// 					name: x,
-// 					highlighted: false,
-// 					selected: (i >= 0 && i <= 5) || i >= 14 || x === 7 || x === 6,
-// 					disabled: x === 9
-// 				}
-// 			}),
 			dayNames: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map(x => (
 				{
 					name: x.slice(0, 1),
@@ -36,9 +28,7 @@ module.exports = React.createClass({
 	},
 
 	onSelect (year, month, day) {
-		if (!this.props.onSelect) return
-
-		this.props.onSelect(this.props.
+		this.props.onSelect(year, month, day)
 	},
 
 	render () {
