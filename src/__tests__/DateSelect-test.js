@@ -1,6 +1,7 @@
 'use strict';
 /*global describe, it, jest, expect*/
 
+jest.dontMock('moment');
 jest.dontMock('../DateSelect');
 
 var React = require('react/addons');
