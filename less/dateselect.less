@@ -14,7 +14,7 @@
 	font-size: @DateSelect-font-size;
 	font-family: @DateSelect-font-family;
 	-webkit-font-smoothing: antialiased;
-	
+
 	* {
 		#DateSelect .box-sizing(border-box);
 	}
@@ -207,7 +207,7 @@
 	&.is-current-day {
 		background-color: @DateSelect-current-day-bg;
 		box-shadow: inset 0 0 0 1px @DateSelect-current-day-border;
-		
+
 		&.is-selected {
 			box-shadow: none;
 
@@ -229,7 +229,7 @@
 
 .multi-picker .DateSelectCalendar:first-child .DateSelectCalendar__month__day.is-selected,
 .multi-picker .DateSelectCalendar:last-child .DateSelectCalendar__month__day.is-selected {
-	
+
 	&::after {
 		border-bottom:  5px solid transparent;
 		border-top: 5px solid transparent;
@@ -553,6 +553,16 @@
 
 
 
+// InlineCalendar
+// ------------------------------
+
+.DateSelect-inline-container {
+	border-radius: @DateSelect-border-radius-outer;
+	box-shadow: 0 0 0 1px rgba(0,0,0,.175);
+	width: @DateSelect-dialog-width;
+}
+
+
 // Sizes
 // ------------------------------
 
@@ -671,12 +681,3 @@
 	from { opacity: 1; }
 	to { opacity: 0; }
 }
-
-
-
-
-
-
-
-
-
