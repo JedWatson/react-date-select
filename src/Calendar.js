@@ -6,19 +6,18 @@ var CalendarHeader = require('./CalendarHeader');
 
 module.exports = React.createClass({
 	propTypes: {
-		isExpanded: React.PropTypes.bool,
-		isHeaderless: React.PropTypes.bool,
-		confirmationIsRequired: React.PropTypes.bool,
-		selectedDate: React.PropTypes.string,
+		header: React.PropTypes.oneOf(['full', 'simple', 'none']),
+		selectedDate: React.PropTypes.any,
 		weekStartsOn: React.PropTypes.string,
 		yearRange: React.PropTypes.arrayOf(React.PropTypes.number)
 	},
 	getDefaultProps() {
 		var yearRange = [];
-		yearRange.push(parseInt(moment().subtract(10, 'years').format('YYYY')));
-		yearRange.push(parseInt(moment().add(10, 'years').format('YYYY')));
+		yearRange.push(parseInt(moment().subtract(100, 'years').format('YYYY')));
+		yearRange.push(parseInt(moment().add(100, 'years').format('YYYY')));
 
 		return {
+			header: 'full',
 			weekStartsOn: 'Monday',
 			yearRange: yearRange
 		};
@@ -81,7 +80,7 @@ module.exports = React.createClass({
 
 		var calendar = (
 			<div className={calendarClass}>
-				{!this.props.isHeaderless && <CalendarHeader selectedDate={this.state.selectedDate} isExpanded={this.props.isExpanded} />}
+				{this.props.header !== 'none' && <CalendarHeader selectedDate={this.state.selectedDate} isExpanded={this.props.header !== 'simple'} />}
 				<div className="DateSelectCalendar__toolbar">
 					<button className="DateSelectCalendar__toolbar__button DateSelectCalendar__toolbar__button--prev">Previous Month</button>
 					<select className="DateSelectCalendar__toolbar__select" defaultValue={currentMonth}>{titleMonths}</select>
