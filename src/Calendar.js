@@ -2,10 +2,9 @@ var React = require('react/addons');
 var moment = require('moment');
 var classNames = require('classnames');
 
-var DateSelectHeader = require('./DateSelectHeader');
+var CalendarHeader = require('./CalendarHeader');
 
 module.exports = React.createClass({
-	displayName: 'DateSelectCalendar',
 	propTypes: {
 		isExpanded: React.PropTypes.bool,
 		isHeaderless: React.PropTypes.bool,
@@ -29,11 +28,9 @@ module.exports = React.createClass({
 			selectedDate: this.props.selectedDate
 		};
 	},
-
 	handleDaySelection(day) {
 		this.setState({ selectedDate: day });
 	},
-
 	render() {
 		var self = this;
 		var firstDayOfMonth = moment().startOf('month').format('D');
@@ -60,9 +57,8 @@ module.exports = React.createClass({
 			years.push(j);
 		}
 
-		
 		// elements
-		
+
 		var weekDays = daysOfTheWeek.map(function(day, i) {
 			return <abbr key={'day' + i} className="DateSelectCalendar__legend__day" title={day}>{day.slice(0, 1)}</abbr>;
 		});
@@ -75,7 +71,7 @@ module.exports = React.createClass({
 			});
 			return <button key={'day' + day} onClick={self.handleDaySelection.bind(self, day)} className={dayClass}>{day}</button>;
 		});
-		
+
 		var titleMonths = months.map(function(month, i) {
 			return <option key={'month' + i} value={month}>{month.slice(0, 3)}</option>;
 		});
@@ -85,7 +81,7 @@ module.exports = React.createClass({
 
 		var calendar = (
 			<div className={calendarClass}>
-				{!this.props.isHeaderless && <DateSelectHeader selectedDate={this.state.selectedDate} isExpanded={this.props.isExpanded} />}
+				{!this.props.isHeaderless && <CalendarHeader selectedDate={this.state.selectedDate} isExpanded={this.props.isExpanded} />}
 				<div className="DateSelectCalendar__toolbar">
 					<button className="DateSelectCalendar__toolbar__button DateSelectCalendar__toolbar__button--prev">Previous Month</button>
 					<select className="DateSelectCalendar__toolbar__select" defaultValue={currentMonth}>{titleMonths}</select>
@@ -96,7 +92,7 @@ module.exports = React.createClass({
 				<div className="DateSelectCalendar__month">{monthDays}</div>
 			</div>
 		);
-		
+
 		return calendar;
 	}
 });

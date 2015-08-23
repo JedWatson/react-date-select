@@ -3,10 +3,9 @@ var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 var moment = require('moment');
 var classNames = require('classnames');
 
-var DateSelectCalendar = require('./DateSelectCalendar');
+var Calendar = require('./Calendar');
 
 module.exports = React.createClass({
-	displayName: 'DateSelectDialog',
 	propTypes: {
 		backdropClosesDateSelect: React.PropTypes.bool,
 		className: React.PropTypes.string,
@@ -45,8 +44,8 @@ module.exports = React.createClass({
 			<div className="DateSelect-dialog">
 				<div className="DateSelect-content">
 					<div className="DateSelect-body">
-						<DateSelectCalendar selectedDate={this.state.startDate} isHeaderless={this.props.isHeaderless} confirmationIsRequired={this.props.confirmationIsRequired} />
-						{this.props.isMulti && <DateSelectCalendar selectedDate={this.state.endDate} isHeaderless={this.props.isHeaderless} />}
+						<Calendar selectedDate={this.state.startDate} isHeaderless={this.props.isHeaderless} confirmationIsRequired={this.props.confirmationIsRequired} />
+						{this.props.isMulti && <Calendar selectedDate={this.state.endDate} isHeaderless={this.props.isHeaderless} />}
 					</div>
 					{this.renderRanges()}
 					{this.renderFooter()}
@@ -85,7 +84,7 @@ module.exports = React.createClass({
 			'multi-picker': this.props.isMulti,
 			'range-picker': this.props.showPredefinedRanges
 		}, this.props.className);
-		
+
 		// build the components
 		return (
 			<div className={componentClass}>
